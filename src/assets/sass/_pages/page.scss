@@ -1,0 +1,102 @@
+@charset "utf-8"; /*　*/
+@import "../projectset";
+
+//*------------------------------------------------------------------------------*/
+//* page.scss
+//*------------------------------------------------------------------------------*/
+
+body.page { // Component
+
+	.main {
+		background: $lightGray;
+	}
+
+	.hero {
+		display: table;
+		height: 300px;
+		letter-spacing: 0.1em;
+		width: 100%;
+		text-align: center;
+		background: $black;
+		color: $white;
+		.hero_body {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0 0.5em;
+		}
+		.hero_title {
+			font-size: 3.8rem;
+		}
+		.hero_title_sub {
+			font-size: 1.6rem;
+			display: block;
+		}
+		.hero_text {
+			font-size: 1.2rem;
+		}
+	}
+
+	.section_body {
+		width: 960px;
+		margin: 0 auto;
+		font-size: 1.6rem;
+		padding-top: 4em;
+		line-height: 2;
+		.section_title {
+			font-size: 2.8rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+		}
+		& > p {
+			margin: 1em 0;
+		}
+		& > ul {
+			margin: 1em 0;
+			li {
+				position: relative;
+				padding-left: 20px;
+				&:before,
+				&:after {
+					content: "";
+					display: block;
+					width: 14px;
+					height: 6px;
+					position: absolute;
+					top: 1em;
+					left: 0;
+				}
+				&:before {
+					background: $gray;
+					margin-top: -6px;
+					transform: rotate(45deg);
+				}
+				&:after {
+					background: $black;
+					margin-top: 0px;
+					transform: rotate(-45deg);
+				}
+			}
+		}
+		.section_code {
+			white-space: pre-wrap;
+			background: $white;
+			border-radius: 10px;
+			padding: 2em;
+			font-size: 1.0rem;
+			line-height: 1.5;
+			margin: 1em 0;
+			letter-spacing: 0.1em;
+		}
+	}
+
+} // [end] body.page
+
+
+//*------------------------------------------------------------------------------*/
+//* hover Effects
+//*------------------------------------------------------------------------------*/
+
+body.page { // Component
+
+
+} // [end] body.page

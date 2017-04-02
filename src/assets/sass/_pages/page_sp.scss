@@ -1,0 +1,56 @@
+@charset "utf-8"; /*　*/
+@import "../projectset";
+
+//*------------------------------------------------------------------------------*/
+//* page.scss
+//*------------------------------------------------------------------------------*/
+@media screen and (max-width: 640px) {
+
+body.page { // Component
+
+	.hero {
+		height: 180px;
+		.hero_body {
+			padding: 0 15px;
+		}
+		.hero_title {
+			font-size: 2.6rem;
+		}
+		.hero_title_sub {
+			font-size: 1.2rem;
+		}
+		.hero_text {
+			font-size: 1.0rem;
+		}
+	}
+
+	.section_body {
+		width: auto;
+		margin: 0 15px;
+		font-size: 1.2rem;
+		padding-top: 3em;
+		line-height: 2;
+		.section_title {
+			font-size: 1.8rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
+		}
+		& > p {
+			margin: 1em 0;
+		}
+		& > ul {
+			margin: 1em 0;
+			li {
+				padding-left: 17px;
+				&:before,
+				&:after {
+					width: 12px;
+					height: 5px;
+				}
+			}
+		}
+	}
+
+} // [end] body.page
+
+}

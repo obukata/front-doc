@@ -1,0 +1,42 @@
+@charset "utf-8"; /*　*/
+@import "../projectset";
+
+//*------------------------------------------------------------------------------*/
+//* top.scss
+//*------------------------------------------------------------------------------*/
+@media screen and (max-width: 640px) {
+
+body.top { // Component
+
+	.hero {
+		height: 180px;
+		.hero_body {
+			padding: 0 15px;
+		}
+		.hero_title {
+			font-size: 2.6rem;
+		}
+		.hero_title_sub {
+			font-size: 1.2rem;
+		}
+		.hero_text {
+			font-size: 1.0rem;
+		}
+	}
+
+	.topics {
+		width: 100%;
+		.topics_item {
+			width: 100%;
+			padding: 1em 15px;
+			box-sizing: border-box;
+			font-size: 1.2rem;
+		}
+	}
+	.readmore {
+		padding: 1em 0;
+	}
+
+} // [end] body.top
+
+}

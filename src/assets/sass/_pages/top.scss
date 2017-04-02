@@ -1,0 +1,66 @@
+@charset "utf-8"; /*　*/
+@import "../projectset";
+
+//*------------------------------------------------------------------------------*/
+//* top.scss
+//*------------------------------------------------------------------------------*/
+
+body.top { // Component
+
+	.hero {
+		display: table;
+		height: 300px;
+		letter-spacing: 0.1em;
+		width: 100%;
+		text-align: center;
+		color: $white;
+		.hero_body {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0 0.5em;
+		}
+		.hero_title {
+			font-size: 3.8rem;
+		}
+		.hero_title_sub {
+			font-size: 1.6rem;
+			display: block;
+		}
+		.hero_text {
+			font-size: 1.2rem;
+		}
+	}
+
+	.topics {
+		width: 960px;
+		margin: 0 auto;
+		.topics_item {
+			width: 300px;
+			padding: 2em 10px;
+			float: left;
+			text-align: center;
+		}
+	}
+	.readmore {
+		text-align: center;
+	}
+
+} // [end] body.top.pc
+
+
+//*------------------------------------------------------------------------------*/
+//* hover Effects
+//*------------------------------------------------------------------------------*/
+
+body.top { // Component
+
+.topics_item a,
+.readmore a {
+	color: $white;
+}
+.topics_item a:hover,
+.readmore a:hover {
+	opacity: 0.4;
+}
+
+} // [end] body.top.pc

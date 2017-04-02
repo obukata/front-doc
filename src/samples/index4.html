@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">scrollアニメーション + loadingアニメーション</h1>
+							<p class="hero_text">2017.03.24</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+					</div>
+
+					<div class="demo_hero">
+						<div class="demo_hero_body demo_section_body">
+							<h2 class="demo_hero_title">
+								<span class="demo_hero_title01">親譲りの無鉄砲で</span>
+								<span class="demo_hero_title02">小供の時から</span>
+								<span class="demo_hero_title03">損ばかりしている。</span>
+							</h2>
+							<p class="demo_hero_img"><img src="https://unsplash.it/600/750?random" alt=""></p>
+							<div class="demo_hero_goods">
+								<p class="demo_hero_goods_img"><img src="https://unsplash.it/120/240?random" alt=""></p>
+								<p class="demo_hero_goods_name">小学校に居る時分</p>
+								<p class="demo_hero_goods_product">学校の二階から飛び降りて一週間ほど腰を抜かした事がある</p>
+							</div>
+						</div>
+					</div>
+					<div class="demo_intro demo_section">
+						<div class="demo_section_body">
+							<ul class="demo_intro_list">
+								<li class="demo_intro_item demo_intro_item01">親譲り</li>
+								<li class="demo_intro_item demo_intro_item02">無鉄砲</li>
+								<li class="demo_intro_item demo_intro_item03">損ばかり</li>
+							</ul>
+							<h3 class="demo_intro_text01">二階ぐらいから飛び降りて腰を抜かす奴があるか	</h3>
+							<p class="demo_intro_text02">新築の二階から首を出していたら、<br>同級生の一人が冗談に、いくら威張っても、<br>そこから飛び降りる事は出来まい。</p>
+							<p class="demo_intro_icon01">
+								<span class="demo_intro_icon01_before01"></span>
+								<span class="demo_intro_icon01_before02"></span>
+								<span class="demo_intro_icon01_after"></span>
+							</p>
+							<p class="demo_intro_icon02"></p>
+						</div>
+					</div>
+					<div class="demo_scrolldata">
+						<p class="demo_scrolldata_title">スクロール量</p>
+						<p class="demo_scrolldata_text">0px</p>
+					</div>
+
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+		<div class="disunable" style="opacity: 0;overflow: hidden;width: 0px;height: 0px;">
+			<img src="https://unsplash.it/120/240?image=0" alt="">
+			<img src="https://unsplash.it/120/240?image=1" alt="">
+			<img src="https://unsplash.it/120/240?image=2" alt="">
+			<img src="https://unsplash.it/120/240?image=3" alt="">
+			<img src="https://unsplash.it/120/240?image=4" alt="">
+			<img src="https://unsplash.it/120/240?image=5" alt="">
+			<img src="https://unsplash.it/120/240?image=6" alt="">
+			<img src="https://unsplash.it/120/240?image=7" alt="">
+			<img src="https://unsplash.it/120/240?image=8" alt="">
+			<img src="https://unsplash.it/120/240?image=9" alt="">
+			<img src="https://unsplash.it/120/240?image=10" alt="">
+			<img src="https://unsplash.it/120/240?image=11" alt="">
+			<img src="https://unsplash.it/120/240?image=12" alt="">
+			<img src="https://unsplash.it/120/240?image=13" alt="">
+			<img src="https://unsplash.it/120/240?image=14" alt="">
+			<img src="https://unsplash.it/120/240?image=15" alt="">
+			<img src="https://unsplash.it/120/240?image=16" alt="">
+			<img src="https://unsplash.it/120/240?image=17" alt="">
+			</div>
+	</div>
+
+</body>
+<style>
+.demo_hero {
+	height: 768px;
+	background: #598987;
+}
+.demo_section_body {
+	min-width: 1024px;
+	position: relative;
+}
+.demo_hero_title {
+	position: absolute;
+	top: 119px;
+	left: 50%;
+	margin-left: -173px;
+	color: white;
+	font-size: 7.0rem;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+	line-height: 1.2;
+	letter-spacing: -0.05em;
+	transform: rotate(-5deg);
+	z-index: 11;
+}
+.demo_hero_title span {
+	display: block;
+}
+.demo_hero_goods_name {
+	position: absolute;
+	top: 510px;
+	left: 50%;
+	margin-left: -115px;
+	color: white;
+	font-size: 6.4rem;
+	letter-spacing: -0.05em;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+	z-index: 11;
+}
+.demo_hero_goods_product {
+	position: absolute;
+	top: 616px;
+	left: 50%;
+	margin-left: -115px;
+	width: 488px;
+	text-align: center;
+	background: #FF6670;
+	line-height: 3.2;
+	font-size: 1.6rem;
+	letter-spacing: -0.05em;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+	z-index: 11;
+	color: white;
+}
+.demo_hero_goods_img {
+	position: absolute;
+	top: 468px;
+	left: 50%;
+	margin-left: 398px;
+	z-index: 11;
+}
+.demo_hero_img {
+	position: absolute;
+	top: 15px;
+	left: 50%;
+	margin-left: -657px;
+	z-index: 10;
+}
+
+.demo_intro {
+	background: #77A88D;
+}
+.demo_intro .demo_section_body {
+	height: 670px;
+}
+.demo_intro_item {
+	width: 190px;
+	background: white;
+	font-size: 2.5rem;
+	color: #FF6670;
+	line-height: 2.8;
+	text-align: center;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+}
+.demo_intro_item01 {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: -301px;
+}
+.demo_intro_item02 {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: -95px;
+}
+.demo_intro_item03 {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	margin-left: 111px;
+}
+.demo_intro_text01 {
+	position: absolute;
+	top: 233px;
+	left: 50%;
+	margin-left: -418px;
+	font-size: 4.0rem;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+	letter-spacing: -0.05em;
+	color: white;
+}
+.demo_intro_text02 {
+	position: absolute;
+	top: 370px;
+	left: 50%;
+	font-size: 2.5rem;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+	letter-spacing: -0.05em;
+	color: white;
+	margin-left: -380px;
+	line-height: 2;
+}
+.demo_intro_icon01 {
+	width: 230px;
+	height: 230px;
+	position: absolute;
+	top: 329px;
+	left: 50%;
+	margin-left: 120px;
+}
+.demo_intro_icon01_before01 {
+	display: block;
+	width: 230px;
+	height: 20px;
+	background: #FFD000;
+	border-radius: 50px;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.demo_intro_icon01_before02 {
+	display: block;
+	width: 230px;
+	height: 20px;
+	background: #FFD000;
+	border-radius: 50px;
+	transform: rotate(-45deg);
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.demo_intro_icon01_after {
+	width: 0;
+	height: 0;
+	display: block;
+	border: solid 20px #FFD000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 50%;
+}
+.demo_intro_icon02 {
+	width: 230px;
+	height: 230px;
+	position: absolute;
+	top: 329px;
+	left: 50%;
+	margin-left: 120px;
+	transform: scale(0);
+}
+.demo_intro_icon02:before {
+	content: "";
+	display: block;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	border: 20px solid #FFD000;
+	display: block;
+}
+
+.demo_scrolldata {
+	position: fixed;
+	top: 50%;
+	margin: auto;
+	background: rgba(0,0,0,0.8);
+	opacity: 0.8;
+	height: auto;
+	width: 200px;
+	padding: 50px 0;
+	margin-top: -80px;
+	z-index: 100;
+}
+.demo_scrolldata_title {
+	color: white;
+	text-align: center;
+	padding: 0 0 10px;
+	font-size: 1.8rem;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+}
+.demo_scrolldata_text {
+	color: white;
+	text-align: center;
+}
+#js--fade {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99998;
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-color: #252328;
+}
+#js--load {
+	display: block;
+	z-index: 99999;
+	width:100px;
+	height: 100px;
+	border-radius: 0%;
+	background: #01a4a2;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -50px;
+	animation: rotation 2000ms linear infinite;
+}
+#js--loadtext {
+	position: fixed;
+	top: 50%;
+	left: 0;
+	margin-top: 100px;
+	width: 100%;
+	text-align: center;
+	color: white;
+}
+#js--loadtext span {
+	letter-spacing: 1.0em;
+}
+
+
+@media screen and (max-width: 640px) {
+	.page_wrap {
+		position: relative;
+	}
+	.demo_hero {
+		height: auto;
+	}
+	.demo_section_body {
+		min-width: 290px;
+		width: 290px;
+		padding: 0 15px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	.demo_hero_body {
+		padding: 40px 0;
+	}
+	.demo_hero_title {
+		position: relative;
+		top: auto;
+		left: auto;
+		width: 260px;
+		margin: 0 auto;
+		font-size: 3.0rem;
+	}
+	.demo_hero_img {
+		position: relative;
+		left: 0;
+		top: -20px;
+		margin: 0;
+		text-align: center;
+	}
+	.demo_hero_img img {
+		width: 200px;
+		height: auto;
+	}
+	.demo_hero_goods_img {
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: -50px 0 10px;
+		text-align: center;
+	}
+	.demo_hero_goods_img img {
+		width: 50px;
+		height: auto;
+	}
+	.demo_hero_goods_name {
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: 0 0 10px;
+		text-align: center;
+		font-size: 2.4rem;
+	}
+	.demo_hero_goods_product {
+		position: relative;
+		top: auto;
+		left: auto;
+		text-align: center;
+		width: auto;
+		margin: 0;
+		line-height: 1.5;
+		padding: 10px 20px;
+	}
+
+	.demo_intro .demo_section_body {
+		padding: 40px 0;
+		height: auto;
+	}
+	.demo_intro_list {
+		margin-bottom: 20px;
+	}
+	.demo_intro_list:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	.demo_intro_item {
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: 0 10px 0 0;
+		width: 90px;
+		float: left;
+		font-size: 1.4rem;
+	}
+	.demo_intro_item:last-child {
+		margin: 0 0 0 0;
+	}
+	.demo_intro_text01 {
+		font-size: 2.2rem;
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: 0 0 20px;
+	}
+	.demo_intro_text02 {
+		font-size: 1.2rem;
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: 0 0 20px;
+	}
+	.demo_intro_text02 br {
+		display: none;
+	}
+	.demo_intro_icon01 {
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: auto;
+	}
+	.demo_intro_icon01_before01 {
+		width: 180px;
+	}
+	.demo_intro_icon01_before02 {
+		width: 180px;
+	}
+	.demo_intro_icon01_after {
+		width: 100px;
+		height: 100px;
+	}
+
+	.demo_scrolldata {
+		top: auto;
+		bottom: 0;
+		margin-top: 0;
+		width: 100%;
+		padding: 10px 0;
+	}
+	.demo_scrolldata_title {
+		font-size: 1.4rem;
+		padding: 0 0 5px;
+	}
+	.demo_scrolldata_text {
+		font-size: 1.2rem;
+	}
+}
+
+@keyframes rotation {
+	0% {
+		transform:rotate(0deg);
+		border-radius: 0%;
+	}
+	50% {
+		border-radius: 50%;
+	}
+	100% {
+		transform:rotate(360deg);
+	}
+}
+@keyframes rotationreverse {
+	0% {
+		transform:rotate(0deg);
+		border-radius: 0%;
+	}
+	50% {
+		border-radius: 50%;
+	}
+	100% {
+		transform:rotate(-360deg);
+	}
+}
+
+</style>
+<script>
+$(function() {
+	imgLoad();
+});
+var cnt1 = [];
+
+function fadeIn($content, speed, easing) {
+	if(!speed) {
+		speed = 400;
+	}
+	if(!easing) {
+		easing = "linear";
+	}
+	$content.css({
+		"transform": "translate3d(0, 100px, 0)"
+	});
+	setTimeout(function() {
+		$content.css({
+			"opacity": 1,
+			"transition": "all " + speed + "ms ",
+			"transform": "translate3d(0, 0, 0)"
+		});
+	}, 300);
+}
+
+function fadeInLeft($content, speed, easing) {
+	if(!speed) {
+		speed = 400;
+	}
+	if(!easing) {
+		easing = "linear";
+	}
+	$content.css({
+		"transform": "translate3d(100px, 0, 0)"
+	});
+	setTimeout(function() {
+		$content.css({
+			"opacity": 1,
+			"transition": "all " + speed + "ms ",
+			"transform": "translate3d(0, 0, 0)"
+		});
+	}, 300);
+}
+
+function scrollSection01(scrolltop, scrollbottom) {
+	var y1 = [];
+	y1[1] = $(".demo_intro_text01").offset().top;
+	if(scrolltop > y1[1] - $(window).height() * 3 / 4) {
+		if(cnt1[1] != 2) {
+			cnt1[1] = 2;
+			fadeIn($(".demo_intro_text01"),400,"linear");
+		}
+	}
+	y1[2] = $(".demo_intro_icon01").offset().top;
+	if(scrolltop > y1[2] - $(window).height() * 3 / 4) {
+		if(cnt1[2] != 2) {
+			cnt1[2] = 2;
+			$(".demo_intro_icon01_before01").css({
+				"transition": "all 300ms linear",
+				"width": "0px",
+				"opacity": 0
+			});
+			$(".demo_intro_icon01_before02").css({
+				"transition": "all 300ms linear",
+				"width": "0px",
+				"opacity": 0
+			});
+			setTimeout(function() {
+				$(".demo_intro_icon01_after").css({
+					"transition": "all 300ms linear",
+					"width": "150px",
+					"height": "150px",
+					"opacity": 1
+				});
+			}, 300);
+		}
+	}
+};
+
+function scrollEvent() {
+	$(window).scroll(function() {
+		var scrolltop = $(window).scrollTop();
+		var scrollbottom = scrolltop + $(window).height();
+		$(".demo_scrolldata_text").text(scrolltop + "px");
+		scrollSection01(scrolltop, scrollbottom)
+	});
+}
+
+function scrollInit() {
+	$(".demo_intro_text01").css({"opacity": 0});
+	$(".demo_intro_icon01_after").css({"opacity": 0});
+}
+
+function firstView() {
+	$(".demo_hero_img").css({"opacity": 0});
+	$(".demo_hero_title01").css({"opacity": 0});
+	$(".demo_hero_title02").css({"opacity": 0});
+	$(".demo_hero_title03").css({"opacity": 0});
+	$(".demo_hero_title03").css({"opacity": 0});
+	$(".demo_hero_goods_name").css({"opacity": 0});
+	$(".demo_hero_goods_product").css({"opacity": 0});
+	$(".demo_hero_goods_img").css({"opacity": 0});
+	setTimeout(function() {
+		$(".demo_hero_img").css({
+			"opacity": 1,
+			"transition": "all 300ms linear"
+		});
+	}, 800);
+	setTimeout(function() {
+		fadeInLeft($(".demo_hero_title01"),400,"linear")
+	}, 1000);
+	setTimeout(function() {
+		fadeInLeft($(".demo_hero_title02"),400,"linear")
+	}, 1200);
+	setTimeout(function() {
+		fadeInLeft($(".demo_hero_title03"),400,"linear")
+	}, 1400);
+	setTimeout(function() {
+		$(".demo_hero_goods_name").css({
+			"opacity": 1,
+			"transition": "all 300ms linear"
+		});
+	}, 2000);
+	setTimeout(function() {
+		$(".demo_hero_goods_product").css({
+			"opacity": 1,
+			"transition": "all 300ms linear"
+		});
+	}, 2200);
+	setTimeout(function() {
+		$(".demo_hero_goods_img").css({
+			"opacity": 1,
+			"transition": "all 300ms linear"
+		});
+	}, 2400);
+}
+
+function imgLoad() {
+	$('body').append('<div id="js--fade"><div id="js--load"></div><div id="js--loadtext"><span>0</span>%</div></div>');
+
+	var allImage = $("img");
+	var percent = $("#js--loadtext span");
+	var completeImageCount = 0;
+	var current;
+	var baseCount = 0;
+
+	var dd = window.dd = allImage.map(function() {
+		var d = new $.Deferred();
+		if(!this.width || !this.complete) {
+			$(this).load(function() {
+				baseCount += 1;
+				current = Math.floor(baseCount / allImage.length * 100);
+				percent.text(current);
+				d.resolve();
+
+				d.done(function() {
+					if(baseCount == allImage.length){
+						console.log(baseCount + ": " + allImage.length);
+						$("#js--fade").css({
+							"opacity": 0,
+							"transition": "all 400ms linear"
+						});
+						setTimeout(function() {
+							console.log("in1111");
+							$("#js--fade").css({
+								"display": "none"
+							})
+						}, 400);
+					}
+			});
+			setTimeout(function() {
+				console.log("in3");
+				percent.text(100);
+				d.resolve();
+			}, 10 * 500);
+			});
+			return d.promise();
+		}else {
+			return d.resolve().promise();
+		}
+	});
+	$.when.apply($, dd).then(function() {
+		console.log("in4");
+		$(window).scrollTop(0);
+		firstView();
+		scrollInit();
+		scrollEvent();
+	});
+	return;
+
+
+
+
+
+	// var nowLoading = setInterval(function () {
+	// 	if(baseCount <= imgCount) {
+	// 		current = Math.floor(baseCount / images.length * 100);
+	// 		percent.text(current);
+	// 		baseCount += 1;
+	// 		if(baseCount == images.length) {
+	// 			percent.text("100");
+	// 			clearInterval(nowLoading);
+	// 		}
+	// 	}
+	// }, 10);
+
+	firstView();
+	scrollInit();
+	scrollEvent();
+}
+</script>
+</html>

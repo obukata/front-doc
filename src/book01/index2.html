@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">クライアントサイド JavaScript</h1>
+							<p class="hero_text">2016.07.12</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">基本的なこと</h2>
+						<p>とっても基本的なHTMLの中でのJavaScriptの扱い。</p>
+						<div class="section_code"><!--
+-->&lt;html>
+&lt;head>
+<span class="text--comment">// 外部JavaScriptファイルを読み込む時はこんな感じ。</span>
+&lt;script src="library.js">&lt;/script>
+&lt;body>
+
+	&lt;p>Text&lt;/p>
+	&lt;script>
+	<span class="text--comment">// この部分に、JavaScriptのコードをそのまま記述できます。</span>
+	&lt;/script>
+
+&lt;/body>
+&lt;/html>
+<!--
+						--></div>
+
+						<p>ブラウザの操作に関してもそのうち詳しく書きます。とりあえず簡単な例。</p>
+						<div class="section_code"><!--
+-->&lt;script>
+function moveon() {
+	var answer = confirm("Ready to move on?");
+	if(answer) {
+		window.location = "http://google.com";
+	}
+}
+&lt;/script>
+
+<span class="btn--ready" onclick="moveon()">DEMO</span><!--
+						--></div>
+
+						<p>DOM操作の例も。</p>
+						<div class="section_code" id="resoult01"><!--
+--><span class="text--comment">// 特定のClassにメッセージを表示させる、そのClassが見つからなければ作る。要素eは表示先のID、要素msgは表示させる文章。</span>
+function debug(e, msg) {
+	var resoult = document.getElementById(e);
+	var target = "false";
+
+	<span class="text--comment">// resoultに代入されている要素eの内容と特定のClassを比較</span>
+	for(var i = 0; i < resoult.children.length; i++) {
+		if(resoult.children[i].className == "comp--debuglog") {
+			var log = resoult.children[i];
+			target = "true";
+		}
+	}
+
+	<span class="text--comment">// 特定Classが無かった場合の処理</span>
+	if(target == "false") {
+		log = document.createElement("div");
+		log.className = "comp--debuglog";
+		log.innerHTML = "&lt;p>Debug log&lt;/p>";
+		resoult.appendChild(log);
+	}
+
+	<span class="text--comment">// 特定Classがあっても無かってもの処理。</span>
+	var pre = document.createElement("pre");
+	var text = document.createTextNode(msg);
+	pre.appendChild(text);
+	log.appendChild(pre);
+}
+
+<span class="btn--ready" onclick="debug('resoult01','NoError')">DEMO</span><!--
+						--></div>
+
+						<p>CSSの操作の例もこんな感じ。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// 要素eのスタイルをスクリプトから制御します。</span>
+function hide(e, reflow) {
+	if(reflow) {
+		e.style.display = "none";
+	}else {
+		e.style.visibility = "hidden";
+	}
+}
+
+<span class="text--comment">// CSSクラスを設定して、要素eをハイライトさせる。</span>
+function highlight(e) {
+	if(!e.className) e.className = "hilite";
+	else e.className += " hilite";
+}<!--
+						--></div>
+
+						<p>イベントハンドラ、クリックやキー押下やウィンドウサイズ変更など色々種類があります。</p>
+						<div class="section_code" id="resoult02"><!--
+--><span class="text--comment">// debug.jsとhide.jsは上で挙げている2つの例ですよ。</span>
+&lt;script src="debug.js">&lt;/script>
+&lt;script src="hide.js">&lt;/script>
+Hello
+&lt;button onclick="hide(this,true); debug('hide button 1');">Hide 1&lt;/button>
+&lt;button onclick="hide(this); debug('hide button 2');">Hide 2&lt;/button>
+World
+
+<div class="comp--debuglog">
+Hello
+<span class="btn--ready" onclick="hide(this,true); debug('resoult02','hide button 1');">Hide 1</span>
+<span class="btn--ready" onclick="hide(this); debug('resoult02','hide button 2');">Hide 2</span>
+World
+</div><!--
+						--></div>
+
+						<p><span class="text--code">load</span>イベントにイベントハンドラを登録します。<span class="text--code">click</span>イベントにイベントハンドラを登録する時の少しいい感じの例。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// ドキュメントが完全に読み込まれた時にloadイベントが発火します。</span>
+window.onload = function() {
+	var images = document.getElementsByTagName('img');
+
+	for(var i = 0; i < images.length; i++) {
+		var image = images[i];
+		if(image.addEventListener)
+			image.addEventListener('click', hide, false);
+		else
+			<span class="text--comment">// IE8以前の互換です。</span>
+			image.attachEvent('onclick', hide);
+	}
+
+	function hide(event) {
+		event.target.style.transform = 'rotateX(180deg)';
+	}
+}
+
+<div class="comp--debuglog" style="text-align: center;"><!--
+	--><p style="display:inline-block; margin-left:15px; margin-right:15px;"><img src="https://unsplash.it/200?image=1077" alt=""></p><!--
+	--><p style="display:inline-block; margin-left:15px; margin-right:15px;"><img src="https://unsplash.it/200?image=1065" alt=""></p><!--
+	--><p style="display:inline-block; margin-left:15px; margin-right:15px;"><img src="https://unsplash.it/200?image=1059" alt=""></p><!--
+--></div><!--
+						--></div>
+
+						<p>そのうち、jQueryについても触れますよ。先に例として書いているdebug関数をjQueryにするとこんな感じでできます。楽です。</p>
+						<div class="section_code" id="resoult03"><!--
+--><span class="text--comment">// 特定のClassにメッセージを表示させる、そのClassが見つからなければ作る。要素eは表示先のID、要素msgは表示させる文章。</span>
+function debug2(e, msg) {
+	var resoult = $('#'+e);
+	var log = $('#'+e+' .comp--debuglog');
+	if(!log.length) {
+		console.log('yes');
+		log = $('&lt;div class="comp--debuglog">&lt;p>Debug log&lt;/p>&lt;/div>');
+		log.appendTo(resoult);
+	}
+	console.log('no');
+	log.append($('&lt;pre/>').text(msg));
+}
+
+<span class="btn--ready" onclick="debug2('resoult03','NoError')">DEMO</span><!--
+						--></div>
+
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+function moveon() {
+	var answer = confirm("Ready to move on?");
+	if(answer) {
+		window.location = "http://google.com";
+	}
+}
+
+function debug(e, msg) {
+	var resoult = document.getElementById(e);
+	var target = "false";
+	for(var i = 0; i < resoult.children.length; i++) {
+		if(resoult.children[i].className == "comp--debuglog") {
+			var log = resoult.children[i];
+			target = "true";
+		}
+	}
+
+	if(target == "false") {
+		log = document.createElement("div");
+		log.className = "comp--debuglog";
+		log.innerHTML = "<p>Debug log</p>";
+		resoult.appendChild(log);
+	}
+
+	var pre = document.createElement("pre");
+	var text = document.createTextNode(msg);
+	pre.appendChild(text);
+	log.appendChild(pre);
+}
+
+function hide(e, reflow) {
+	if(reflow) {
+		e.style.display = "none";
+	}else {
+		e.style.visibility = "hidden";
+	}
+}
+
+window.onload = function() {
+	var images = document.getElementsByTagName('img');
+
+	for(var i = 0; i < images.length; i++) {
+		var image = images[i];
+		if(image.addEventListener)
+			image.addEventListener('click', hide, false);
+		else
+			image.attachEvent('onclick', hide);
+	}
+
+	function hide(event) {
+		event.target.style.transition = '500ms';
+		event.target.style.transform = 'rotateY(180deg)';
+	}
+}
+
+function debug2(e, msg) {
+	var resoult = $('#'+e);
+	var log = $('#'+e+' .comp--debuglog');
+	if(!log.length) {
+		console.log('yes');
+		log = $('<div class="comp--debuglog"><p>Debug log</p></div>');
+		log.appendTo(resoult);
+	}
+	console.log('no');
+	log.append($('<pre/>').text(msg));
+}
+</script>
+</html>

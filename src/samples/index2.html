@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">無限スライダー</h1>
+							<p class="hero_text">2017.03.01</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+					</div>
+
+					<div class="demo_scroll">
+						<ul class="demo_scroll_list">
+							<li class="demo_scroll_item item01"><img src="https://unsplash.it/600/300?image=10" alt=""></li>
+							<li class="demo_scroll_item item02"><img src="https://unsplash.it/600/300?image=11" alt=""></li>
+							<li class="demo_scroll_item item03"><img src="https://unsplash.it/600/300?image=12" alt=""></li>
+							<li class="demo_scroll_item item04"><img src="https://unsplash.it/600/300?image=13" alt=""></li>
+							<li class="demo_scroll_item item05"><img src="https://unsplash.it/600/300?image=14" alt=""></li>
+							<li class="demo_scroll_item item06"><img src="https://unsplash.it/600/300?image=15" alt=""></li>
+						</ul>
+						<ul class="demo_scroll_list2">
+							<li class="demo_scroll_item item01"><img src="https://unsplash.it/600/300?image=16" alt=""></li>
+							<li class="demo_scroll_item item02"><img src="https://unsplash.it/600/300?image=17" alt=""></li>
+							<li class="demo_scroll_item item03"><img src="https://unsplash.it/600/300?image=18" alt=""></li>
+							<li class="demo_scroll_item item04"><img src="https://unsplash.it/600/300?image=19" alt=""></li>
+							<li class="demo_scroll_item item05"><img src="https://unsplash.it/600/300?image=20" alt=""></li>
+							<li class="demo_scroll_item item06"><img src="https://unsplash.it/600/300?image=21" alt=""></li>
+						</ul>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<style>
+.demo_scroll {
+	overflow: hidden;
+}
+.demo_scroll_list:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.demo_scroll_item {
+	float: left;
+}
+.demo_scroll_item img {
+	width: 300px;
+	height: auto;
+}
+</style>
+<script>
+$(function() {
+	demoScroll();
+});
+
+function demoScroll() {
+	var duration = 10000;
+	var imgW = 300;
+	var imgH = 150;
+
+	var slideItem1 = $('.demo_scroll_list').find('li');
+	var slideItem2 = $('.demo_scroll_list2').find('li');
+
+	var holder1 = $('.demo_scroll_list').css({
+		"position": "relative",
+		"top": 0,
+		"left": 0,
+		"height": "150px"
+	});
+	var holder2 = $('.demo_scroll_list2').css({
+		"position": "relative",
+		"top": 0,
+		"left": 0,
+		"height": "150px"
+	});
+
+	var dummy1 = $("<li></li>").css({"left": 0});
+	var dummy2 = $("<li></li>").css({"left": 0});
+
+	var len = slideItem1.length;
+
+	var i = 1;
+	slideItem1.each(function(i) {
+		holder1.append(slideItem1.eq(i).clone());
+	});
+	slideItem2.each(function(i) {
+		holder2.append(slideItem2.eq(i).clone());
+	});
+	while(window.parent.screen.width > slideItem1.length * imgW * i) {
+		slideItem1.each(function(i) {
+			holder1.append(slideItem1.eq(i).clone());
+		});
+		slideItem2.each(function(i) {
+			holder2.append(slideItem2.eq(i).clone());
+		});
+		i++;
+	}
+
+	holder1.find('li').each(function(i) {
+		$(this).css({
+			"position": "absolute",
+			"left": i * imgW
+		});
+	});
+	holder2.find('li').each(function(i) {
+		$(this).css({
+			"position": "absolute",
+			"left": i * imgW
+		});
+	});
+
+	holder2.css({
+		"transform": "translate3d(-" + imgW * len + "px, 0, 0)"
+	});
+
+	function slideMove1() {
+		console.log("in");
+		holder1.css({
+			"transition": "all " + duration + "ms linear",
+			"transform": "translate3d(-" + imgW * len + "px, 0, 0)"
+		});
+
+		dummy1.stop().css({"left": 0}).animate({
+			"left": - imgW * len
+		}, duration, "linear", function() {
+			console.log("in2");
+			holder1.css({
+				"transition": "all 0ms linear",
+				"transform": "translate3d(0, 0, 0)"
+			});
+			setTimeout(slideMove1, 10);
+		});
+	}
+
+	function slideMove2() {
+		console.log("in");
+		holder2.css({
+			"transition": "all " + duration + "ms linear",
+			"transform": "translate3d(0, 0, 0)"
+		});
+
+		dummy2.stop().css({"left": - imgW * len}).animate({
+			"left": 0
+		}, duration, "linear", function() {
+			console.log("in2");
+			holder2.css({
+				"transition": "all 0ms linear",
+				"transform": "translate3d(-" + imgW * len + "px, 0, 0)"
+			});
+			setTimeout(slideMove2, 10);
+		});
+	}
+	setTimeout(slideMove1, 10);
+	setTimeout(slideMove2, 10);
+}
+
+</script>
+</html>

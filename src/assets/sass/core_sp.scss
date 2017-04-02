@@ -1,0 +1,84 @@
+@charset "utf-8"; /*　*/
+// PROJECT SET
+@import "projectset";
+
+///* ==================================================
+//	SP STYLES
+//================================================== */
+@media screen and(max-width: 640px) {
+
+.page_wrap {
+	min-width: $InnerMinWidth_sp;
+}
+
+.header {
+	min-width: $InnerMinWidth_sp;
+	.header_body {
+		min-width: 0;
+		margin: 0 15px;
+		padding: 0.5em 0;
+	}
+	.header_logo {
+		font-size: 1.2rem;
+	}
+}
+
+.main {
+	padding-bottom: 3rem;
+	background: $black;
+}
+
+
+.footer {
+	.footer_body {
+		padding: 0.5em;
+	}
+}
+
+//* ==================================================
+//	Common Modules
+//================================================== */
+.line--title_bottom:after {
+	content: "";
+	display: block;
+	height: 1px;
+	margin: 12px auto;
+	position: relative;
+	width: 10px;
+}
+.text--code {
+	font-size: 1.0rem;
+}
+.btn--ready {
+	font-size: 1.0rem;
+}
+.comp--table {
+	display: block;
+	width: 100%;
+}
+.comp--table_row {
+	display: block;
+	margin: 0.5em 0;
+	padding: 0.5em 0;
+	border-top: 1px dashed $gray;
+	&:first-child {
+		border-top: none;
+	}
+}
+.comp--table_head {
+	display: block;
+	font-weight: 600;
+	line-height: 1.5;
+}
+.comp--table_body {
+	display: block;
+	line-height: 1.5;
+}
+
+}
+
+//* ==================================================
+//	age include
+//================================================== */
+@import "_pages/top_sp";
+@import "_pages/page_sp";

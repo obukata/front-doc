@@ -1,0 +1,188 @@
+@charset "utf-8"; /*　*/
+// RESET
+@import "lib/yuireset_3.18.1";
+@import "util/basefix";
+// PROJECT SET
+@import "projectset";
+
+
+//* ==================================================
+//	SetBody
+//================================================== */
+html,body {
+	width: 100%;
+	height: auto;
+}
+
+//* FontSet---------------------------------------- */
+html {
+	@include fontset_html_ja;
+	body { @include fontset_body_ja;}
+}
+html[lang="en"] {
+	@include fontset_html_en;
+	body { @include fontset_body_en;}
+}
+
+
+//* ==================================================
+//	Common Layout
+//================================================== */
+.page_wrap {
+	min-width: $InnerMinWidth;
+	font-weight: 100;
+}
+
+.header {
+	min-width: $InnerMinWidth;
+	border-bottom: 1px solid $lightBlack;
+	background: $black;
+	color: $white;
+	.header_body {
+		min-width: 960px;
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 0.5em;
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	}
+	.header_logo {
+		float: left;
+		line-height: 30px;
+	}
+	.header_github {
+		float: right;
+		img {
+			width: 30px;
+			height: auto;
+		}
+	}
+}
+
+.main {
+	padding-bottom: 7rem;
+	background: $black;
+}
+
+.footer {
+	border-top: 1px solid $lightBlack;
+	background: $black;
+	color: $white;
+	.footer_body {
+		padding: 0.5em;
+		text-align: center;
+		font-size: 1.0rem;
+	}
+}
+
+//* ==================================================
+//	Common Modules
+//================================================== */
+.line--title_bottom:after {
+	background: $white;
+	content: "";
+	display: block;
+	height: 2px;
+	margin: 18px auto;
+	position: relative;
+	width: 10px;
+}
+.line--color01:after {
+	background: #01a4a2;
+}
+.text--code {
+	border-radius: 10px;
+	background: $white;
+	padding: 0.5em 1em;
+	font-size: 1.2rem;
+}
+.text--comment {
+	color: $comment;
+}
+.text--strong {
+	font-family: NotoSans-Bold;
+}
+.icon--attention {
+	position: relative;
+	padding-left: 20px;
+	display: inline-block;
+	&:before {
+		display: block;
+		content: "";
+		position: absolute;
+		left: 7px;
+		top: 24px;
+		width: 6px;
+		height: 6px;
+		background: $gray;
+	}
+	&:after {
+		display: block;
+		content: "";
+		position: absolute;
+		left: 7px;
+		top: 6px;
+		width: 6px;
+		height: 14px;
+		background: $black;
+	}
+}
+.btn--ready {
+	display: inline-block;
+	border-radius: 10px;
+	background: $black;
+	color: $white;
+	padding: 0.5em 1em;
+	font-size: 1.2rem;
+	cursor: pointer;
+	margin-top: 1em;
+}
+.comp--debuglog {
+	margin-top: 1em;
+	background: $lightGray;
+	color: $black;
+	padding: 0.5em 1em;
+	& > p {
+		margin: 0.5em 0;
+		font-weight: 600;
+	}
+	& > pre {
+		margin: 0.5em 0;
+	}
+}
+.comp--table {
+	display: table;
+	width: 100%;
+}
+.comp--table_row {
+	display: table-row;
+}
+.comp--table_head,
+.comp--table_body {
+	display: table-cell;
+}
+
+//* ==================================================
+//	hover Effects
+//================================================== */
+a {
+	text-decoration: none;
+}
+.header_logo a {
+	color: $white;
+}
+.header_github a:hover {
+	opacity: 0.7;
+}
+.btn--ready:hover {
+	opacity: 0.7;
+}
+
+//* ==================================================
+//	age include
+//================================================== */
+@import "_pages/top";
+@import "_pages/page";
