@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="../assets/scripts/core.js"></script>
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">アコーディオン</h1>
+							<p class="hero_text">2016.11.18</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+
+						<div class="demo_accordion">
+							<ul id="js--accordion" class="demo_accordion_list is--pc_only">
+								<li class="demo_accordion_item demo_accordion_item1">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+								<li class="demo_accordion_item demo_accordion_item2">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+								<li class="demo_accordion_item demo_accordion_item3">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+								<li class="demo_accordion_item demo_accordion_item4">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="demo_accordion_list is--sp_only">
+								<li class="demo_accordion_item demo_accordion_item1">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+								<li class="demo_accordion_item demo_accordion_item2">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+								<li class="demo_accordion_item demo_accordion_item3">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+								<li class="demo_accordion_item demo_accordion_item4">
+									<div class="demo_accordion_wrap">
+										<div class="demo_accordion_title">Accordion</div>
+										<div class="demo_accordion_body">親譲りの無鉄砲で小供の時から損ばかりしている。<br>小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<style>
+.is--sp_only {
+	display: none;
+}
+.is--pc_only {
+	display: block;
+}
+.demo_accordion {
+	display: table;
+}
+.demo_accordion_item {
+	display: table-cell;
+	overflow: hidden;
+	height: 360px;
+	transition: all 400ms;
+}
+.demo_accordion_item:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.demo_accordion_item1 {
+	background: #678F8D;
+}
+.demo_accordion_item2 {
+	background: #77A88D;
+}
+.demo_accordion_item3 {
+	background: #FFD000;
+}
+.demo_accordion_item4 {
+	background: #FF6670;
+}
+.demo_accordion_wrap {
+	padding: 20px;
+}
+.demo_accordion_title {
+	font-size: 2.5rem;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-family: NotoSans-Bold;
+	white-space: nowrap;
+	padding-bottom: 20px;
+}
+.demo_accordion_body {
+	color: white;
+}
+
+@media screen and (max-width: 640px) {
+	.is--pc_only {
+		display: none;
+	}
+	.is--sp_only {
+		display: block;
+	}
+	.demo_accordion {
+		display: block;
+	}
+	.demo_accordion_item {
+		display: block;
+		height: auto;
+	}
+}
+
+</style>
+<script>
+$(function() {
+	demoAccordion($('#js--accordion li'));
+});
+
+function demoAccordion(target) {
+	var boxes = target;
+	var singleBox = 100 / boxes.length;
+	var openBox = 90;
+	var closeBox = (100 - openBox) / (boxes.length - 1);
+	boxes.css({
+		"width": singleBox + "%"
+	});
+	boxes.on('mouseover', function() {
+		boxes.css({
+			"width": closeBox + "%"
+		});
+		$(this).css({
+			"width": openBox + "%"
+		}).addClass('active');
+	}).on('mouseleave', function() {
+		boxes.css({
+			"width": singleBox + "%"
+		});
+		$(this).removeClass('active');
+	});
+}
+
+</script>
+</html>

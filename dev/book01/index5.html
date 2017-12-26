@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">型、値、変数</h1>
+							<p class="hero_text">2016.07.16</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">はじめに</h2>
+						<p>少しづつややこしくなってくるよ。型と値と変数について。<br>簡単な概念くらいは分かってるかと思います。変数に代入されている中身？「123」とか「Hello World」とかが<span class="text--strong">値</span>です。<br>プログラミング言語で操作する値の種類の事を<span class="text--strong">型</span>といいます。<br>でもって、値を保管？代入？しておくのが<span class="text--strong">変数</span>です。<br>JavaScriptの型には大きく分けて、<span class="text--strong">基本型</span>と<span class="text--strong">オブジェクト型</span>の2種類があります。</p>
+
+						<h2 class="section_title">型</h2>
+						<p><span class="text--strong">基本型</span></p>
+						<ul>
+							<li>数値 → 「123」とか「1.23」とか。</li>
+							<li>文字列 → 「Hello World」とか「文字列」とか「１２３」とか。</li>
+							<li>理論値 → 「true」か「false」</li>
+							<li>null</li>
+							<li>undefined</li>
+						</ul>
+						<p><span class="text--strong">オブジェクト型</span></p>
+						<ul>
+							<li>上記基本型以外のもの。</li>
+							<li>プロパティの集合体（プロパティは名前と値を持ち、数値や文字列など基本型の値やオブジェクトを保持できます。）</li>
+							<li>グローバルオブジェクト</li>
+							<li>配列</li>
+							<li>関数</li>
+							<li>クラス</li>
+						</ul>
+						<p>クラスはかなりややこしいですよ。<br>クラスとは、コンストラクタで初期化されるオブジェクトの集合体です。<br>コンストラクタとは、<span class="text--code">new演算子</span>を使って新たに生成するオブジェクトを初期化するための関数で、オブジェクトのクラスを定義します。</p>
+						<p>JavaScriptはオブジェクト指向言語と言い、簡単に言うと…<br><span class="text--strong">配列aの要素をソートするには、sort()関数に配列aを引数として渡すのではなく、配列aのsort()メソッドを呼び出すのがオブジェクト指向的な考え方です。</span></p>
+						<div class="section_code"><!--
+--><span class="text--comment">// sort()関数に配列aの引数を渡すのがこれ。</span>
+sort(a);
+
+<span class="text--comment">// オブジェクト指向的な考え方はこれ。sort()メソッドを使います。</span>
+a.sort();<!--
+						--></div>
+
+						<h2 class="section_title">変数</h2>
+						<p class="icon--attention">変数には宣言する位置によってどこからアクセス出来るかが変わります。<br>関数の外側で宣言された変数は<span class="text--strong">グローバル変数</span>としてプログラム全体からアクセス可能です。<br>関数中で宣言された変数は<span class="text--strong">関数スコープ</span>となり、関数中のみアクセス可能です。</p>
+						<div class="section_code"><!--
+-->var outscope = 'text';
+
+function scope() {
+	<span class="text--comment">// inscopeは関数の外側では呼び出せない。</span>
+	var inscope = 'text'; 
+}<!--
+						--></div>
+
+						<h2 class="section_title">値</h2>
+						<p><span class="text--strong">数値</span></p>
+						<p>JavaScriptの算術演算子には<span class="text--code">+</span><span class="text--code">-</span><span class="text--code">*</span><span class="text--code">/</span><span class="text--code">%</span>があります。<br>これらの他にもっと複雑な数学演算を行う関数もあります。以下、例です。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// 2の53乗</span>
+Math.pow(2, 53)
+
+<span class="text--comment">// -> 1.0 最近傍の整数に変換</span>
+Math.round(.6)
+
+<span class="text--comment">// -> 1.0 整数に切り上げ</span>
+Math.ceil(.6)
+
+<span class="text--comment">// -> 0.0 整数に切り捨て</span>
+Math.floor(.6)
+
+<span class="text--comment">// -> 5 絶対数</span>
+Math.abs(-5)
+
+<span class="text--comment">// 引数の中から最大値を返す</span>
+Math.max(x, y, z)
+
+<span class="text--comment">// 引数の中から最小値を返す</span>
+Math.min(x, y, z)
+
+<span class="text--comment">// 0以上1.0未満の擬似乱数を返す</span>
+Math.random()
+
+<span class="text--comment">// π 円周率</span>
+Math.PI
+
+<span class="text--comment">// 自然対数の底（意味は知らない）</span>
+Math.E
+
+<span class="text--comment">// 3の平方根</span>
+Math.sqrt(3)
+
+<span class="text--comment">// 3の立方根</span>
+Math.pow(3, 1/3)
+
+<span class="text--comment">// 三角関数 Math.cos Math.atan もあるよ。</span>
+Math.sin(0)
+
+<span class="text--comment">// 10の自然対数</span>
+Math.log(10)
+
+<span class="text--comment">// 底が10の100の対数（100の常用対数）</span>
+Math.log(100) / Math.LN10
+
+<span class="text--comment">// 底が2の512の対数</span>
+Math.log(512) / Math.LN2
+
+<span class="text--comment">// Math.Eの3乗</span>
+Math.exp(3)<!--
+						--></div>
+
+						<p class="icon--attention">色々あって、大半のプログラミング言語では小数点を厳密に表現出来ないです。<br>なので、小数点の計算は整数までスケールを調整して行いましょう。br詳しくは2進浮動小数点と丸め誤差を調べるといいです。</p>
+
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>

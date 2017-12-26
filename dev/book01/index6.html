@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">オブジェクト</h1>
+							<p class="hero_text">2016.03.14</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">はじめに</h2>
+						<p>オブジェクトとは、複合型のデータ型です。<br>簡単に言うと、複数のデータ値を1つにまとめて名前によってデータ値を保存したり読みだしたりできるようにするものです。<br>もっと簡単に説明するとこんな感じです。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// bookオブジェクト。titleとauthorがプロパティ。JavaScriptとauthorがその値ですよ。</span>
+var book = {
+	'title': 'JavaScript',
+	'author': "O'REILLY"
+}<!--
+						--></div>
+						<p>ほかのオブジェクトからプロパティを継承することも出来るらしく、その継承対象になるオブジェクトを<span class="text--strong">プロトタイプ</span>と呼びます。</p>
+
+						<h2 class="section_title">オブジェクトの生成</h2>
+						<p>オブジェクトは、<span class="text--strong">オブジェクトリテラル</span>、または<span class="text--strong">new</span>キーワードを使って生成します。<br>ECMAScript 5の場合はObject.create()関数を使って生成することもできます。が、ECMAScriptについてよく分かってないので、とりあえず知識だけです。</p>
+						<p><span class="text--strong">オブジェクトリテラル</span></p>
+						<p>JavaScriptでオブジェクトを生成する最も簡単な方法が、オブジェクトリテラルです。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// プロパティを持たないオブジェクト</span>
+var empty = {};
+
+<span class="text--comment">// プロパティを2つ持つオブジェクト</span>
+var point = {x: 0, y: 0};
+
+<span class="text--comment">// 複雑ー。</span>
+var point2 = {x: point.x, y: point.y + 1};
+
+<span class="text--comment">// プロパティの値自体がオブジェクトになるのもあり。</span>
+var book = {
+	'author': {
+		firstname: 'David',
+		surname: 'Flanagan'
+	}
+};<!--
+						--></div>
+						<p><span class="text--strong">newを使ったオブジェクトの生成</span></p>
+						<p>new演算子を使えば、オブジェクトを生成し初期化できます。<br>newキーワードの後ろには、関数呼び出しを記述します。<br>このような方法で使われる関数を<span class="text--strong">コンストラクタ</span>と呼びます。<br>まぁ、とりあえず例を見てください。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// var o = {};と一緒</span>
+var o = new Object();
+
+<span class="text--comment">// var a = [];と一緒</span>
+var a = new Array();
+
+<span class="text--comment">// 現在時刻を表すDateオブジェクトを生成する</span>
+var d = new Date();
+
+<span class="text--comment">// パターンマッチング用にRegExpオブジェクトを生成する</span>
+var r = new RegExp("js");<!--
+						--></div>
+						<p><span class="text--strong">プロトタイプ</span></p>
+						<p>すべてのJavaScriptオブジェクトには、もう1つ別のオブジェクトが関連付けられています。このもう1つのオブジェクトを<span class="text--strong">プロトタイプ</span>と呼び、オブジェクトはこのプロトタイプのプロパティを継承します。<br>オブジェクトリテラルを使って生成したオブジェクトはすべて、同じプロトタイプオブジェクトを持ちます。このプロトタイプオブジェクトは、JavaScriptコード中で<span class="text--code">Object.prototype</span>として参照できます。<br>newキーワードとコンストラクタ呼び出しを使って生成されたオブジェクトは、プロトタイプとしてコンストラクタ関数のprototypeプロパティの値を使います。<br>したがって、<span class="text--code">new Object()</span>という式で生成されたオブジェクトは、<span class="text--code">{}</span>で生成されたオブジェクト同様に、<span class="text--code">Object.prototype</span>を継承します。<br>同様に、<span class="text--code">new Array()</span>という式で生成されたオブジェクトは、プロトタイプとして<span class="text--code">Array.prototype</span>の値を使います。<br>とにかく、プロトタイプについてはそのうち詳しくなります。</p>
+						<p><span class="text--strong">Object.create()</span></p>
+						<p>ECMAScript 5では、新しいオブジェクトを生成するために<span class="text--code">Object.create()</span>メソッドを定義しています。<br>とりあえず例を見ましょう。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// o1はプロパティxとyを継承する</span>
+var o1 = Object.create({x: 1,y: 2});<!--
+						--></div>
+						<p>nullを渡せば、プロトタイプを持たないオブジェクトを生成することもできます。<br><span class="text--code">{}</span>や<span class="text--code">Object()</span>で生成されるのと同じように、通常の空のオブジェクトを生成したい場合は、<span class="text--code">Object.prototype</span>を引数として渡します。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// o3は{}やnew Object()で生成したものと同じ</span>
+var o3 = Object.create(Object.prototype);<!--
+						--></div>
+
+						<h2 class="section_title">プロパティの読み出しと書き込み</h2>
+						<p>プロパティの読み出しはこんな感じ。</p>
+						<div class="section_code"><!--
+-->var author = book.author;
+var author = book["author"];<!--
+						--></div>
+						<p>プロパティの値を設定する時も同じ感じ。</p>
+						<div class="section_code"><!--
+-->book.author = 6;
+book["author"] = 6;<!--
+						--></div>
+
+						<h2 class="section_title">連想配列としてのオブジェクト</h2>
+						<p>配列というと<span class="text--code">book[1]</span>とか、インデックスを数値で書きます。連想配列ってのは、この配列のインデックスを文字列で書きます。<span class="text--code">book["property"]</span>みたいな。<br>プロパティの読み出しと書き込みには、上で挙げた2種類あるんですが、この連想配列を使ったほうが良い感じに書ける場合があります。<br>こんな感じ。</p>
+						<div class="section_code"><!--
+-->var addr = "";
+for(i = 0; i < 4; i++;) {
+	addr += customer["address" + i] + '¥n';
+}
+
+<span class="text--comment">// 以下のオブジェクトの内容が読み出され連結されます。
+>	customer[address0]
+	customer[address1]
+	customer[address2]
+	customer[address3]</span><!--
+						--></div>
+						<p>こんな感じで、プログラム上で操作する場合なんかに便利です。<br>次の例は、for/inループってのが使われていてちょっと分かりづらいかもですが、追々わかります。<br>ユーザーが入力したものに対して、柔軟にオブジェクトやプロパティを設定できる例です。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// ユーザーがIBMの株を50株持っていた場合はportfolio.ibm = 50。</span>
+<span class="text--comment">// ユーザーが入力した値で、柔軟にオブジェクトの生成、プロパティの設定をする場合はこんな感じ</span>
+function addstock(portfolio, stockname, shares) {
+	portfolio[stockname] = shares;
+}
+
+function getvalue(portfolio) {
+	var total = 0.0;
+	<span class="text--comment">// portfolio内の株ごとに計算する</span>
+	for(stock in portfolio) {
+		<span class="text--comment">// 株数を取得する</span>
+		var shares = portfolio[stock];
+		<span class="text--comment">// 株価を検索する</span>
+		var price = getquote(stock);
+		<span class="text--comment">// 株ごとの時価総額を、総額に追加する</span>
+		total += shares * price;
+	}
+	<span class="text--comment">// 株の総額を返す</span>
+	return total;
+}<!--
+						--></div>
+
+						<h2 class="section_title">継承</h2>
+						<p>これ、やばい。超分かりにくいよ。<br>オブジェクトはプロトタイプオブジェクトからプロパティを継承するのは上で説明しています。<br>「オブジェクトAの継承元のオブジェクトBの継承元のプロトタイプオブジェクト」とかもありえる感じです。このオブジェクトAは、オブジェクトBとプロトタイプオブジェクトを継承しているので、その2つのオブジェクトのプロパティを読み出せます。<br>こんな例でどうでしょう。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// oオブジェクトを生成します（プロトタイプオブジェクトを継承）</span>
+var o = {};
+<span class="text--comment">// oオブジェクトにはxプロパティがあります。</span>
+o.x = 1;
+<span class="text--comment">// pオブジェクトを生成します（oオブジェクトとプロトタイプオブジェクトを継承）</span>
+var p = inherit(o);
+<span class="text--comment">// pオブジェクトはyプロパティがあります。</span>
+p.y = 2;
+<span class="text--comment">// qオブジェクトを生成します（pオブジェクトとoオブジェクトとプロトタイプオブジェクトを継承）</span>
+var q = inherit(p);
+<span class="text--comment">// qオブジェクトはzプロパティがあります。</span>
+q.z = 3;
+<span class="text--comment">// toString()は、文字列に変換した結果を返します。この場合は[object Object]になりますが、とりあえず。</span>
+<span class="text--comment">// でもって、q.toString()とした場合はqのプロトタイプオブジェクトを継承します。</span>
+var s = q.toString();
+<span class="text--comment">// q.xはo.xを継承しているので1。q.yはp.yを継承しているので2。結果3。</span>
+q.x + q.y;<!--
+						--></div>
+						<p>でもって、継承したプロパティはオーバーライド、上書きができます。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// unitcircleオブジェクト、プロパティr、値1</span>
+var unitcircle = {r: 1};
+<span class="text--comment">// cオブジェクトを生成（unitcircleオブジェクトとプロトタイプオブジェクトを継承）</span>
+var c = inherit(unitcircle);
+c.x = 1;
+c.y = 1;
+<span class="text--comment">// unitcircleオブジェクトのr:1をオーバーライド。</span>
+c.r = 2;
+<span class="text--comment">// => 1。継承元のプロパティには影響なし。</span>
+unitcircle.r;<!--
+						--></div>
+						<p>この上書きには例外もあって、セッターメソッド（追々説明）を持つようなアクセサプロパティの場合はセッターメソッドが呼び出されます。<br>とりあえず知識まで。</p>
+
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>

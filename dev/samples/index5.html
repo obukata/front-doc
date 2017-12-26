@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">SPリダイレクト</h1>
+							<p class="hero_text">2017.03.31</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">SP useragent判別リダイレクト</h2>
+						<div class="section_code"><!--
+<--><span class="text--comment">// ユーザーエージェント
+</span></--><span id="js--userAgent"></span>
+
+<span class="text--comment">// SPなら/sp/をアドレスに追加</span>
+function redirect(){
+	var urlMobile = location.href.match(/sp/);
+	if(!urlMobile && ua.isMobile){
+		var mobileLocation = "/sp"+location.pathname;
+		location.href = mobileLocation;
+	}else if(urlMobile && !ua.isMobile){
+		location.href = location.href.replace("/sp/","/");
+	}
+}<!--
+												--></div>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+</body>
+<script>
+var _ua = navigator.userAgent.toLowerCase(),
+		_IE, _IEVer,
+		_Chrome, _ChromeVer,
+		_Firefox, _FirefoxVer,
+		_Safari, _SafariVer,
+		_Opera, _OperaVer,
+		_iPhone, _iPad, _iPod, _iOSVer,
+		_Android, _AndroidMobile, _AndroidTablet, _AndroidVer;
+// ブラウザ(デスクトップ)
+if(_ua.indexOf('msie') != -1) {
+	_IE = true;
+	_ua.match(/msie (\d+\.\d)/);
+	_IEVer = parseFloat(RegExp.$1);
+}else if(_ua.indexOf('trident') != -1){
+	_IE = true;
+	_ua.match(/rv:(\d+\.\d)/);
+	_IEVer = parseFloat(RegExp.$1);
+}else if(_ua.indexOf('chrome') != -1) {
+	_Chrome = true;
+	_ua.match(/chrome[\/ ]?(\d+\.\d+)/);
+	_ChromeVer = parseFloat(RegExp.$1);
+}else if(_ua.indexOf('firefox') != -1) {
+	_Firefox = true;
+	_ua.match(/firefox[\/ ]?(\d+\.\d+)/);
+	_FirefoxVer = parseFloat(RegExp.$1);
+}else if(_ua.indexOf('opera') != -1) {
+	_Opera = true;
+	_ua.match(/opera[\/ ]?(\d+\.\d+)/);
+	_OperaVer = parseFloat(RegExp.$1);
+}else if(_ua.indexOf('safari') != -1) {
+	_Safari = true;
+	_ua.match(/version[\/ ]?(\d+\.\d+)/);
+	_SafariVer = parseFloat(RegExp.$1);
+}
+// ブラウザ(モバイル)
+if(_ua.indexOf('iphone') != -1) {
+	_iPhone = true;
+	_ua.match(/iphone os (\d+)_(\d+)/);
+	_iOSVer = RegExp.$1*1 + RegExp.$2*0.1;
+}else if(_ua.indexOf('ipad') != -1) {
+	_iPad = true;
+	_ua.match(/cpu os (\d+)_(\d+)/);
+	_iOSVer = RegExp.$1*1 + RegExp.$2*0.1;
+}else if(_ua.indexOf('ipd') != -1) {
+	_iPod = true;
+	_ua.match(/os (\d+)_(\d+)/);
+	_iOSVer = RegExp.$1*1 + RegExp.$2*0.1;
+}else if(_ua.indexOf('android') != -1) {
+	_Android = true;
+	_ua.match(/android (\d+\.\d)/);
+	_AndroidVer = parseFloat(RegExp.$1);
+	if(_ua.indexOf('mobile') != -1) {
+		_AndroidMobile = true;
+	}else {
+		_AndroidTablet = true;
+	}
+}
+var ua = {
+	// 振り分け
+	isIE: !!_IE,
+	isIE6: (_IEVer == 6.0),
+	isIE7: (_IEVer == 7.0),
+	isIE8: (_IEVer == 8.0),
+	isIE9: (_IEVer == 9.0),
+	isIE10: (_IEVer == 10.0),
+	isIE11: (_IEVer == 11.0),
+	isChrome: (!!_Chrome),
+	isFirefox: (!!_Firefox),
+	isOpera: (!!_Opera),
+	isSafari: (!!_Safari),
+	isMobile: (!!_iPhone || !!_iPod || !!_AndroidMobile),
+	isTablet: (!!_iPad || !!_AndroidTablet),
+	// バージョン
+	verIE: _IEVer,
+	verFireFox : _FirefoxVer,
+	verChrome : _ChromeVer,
+	verSafari : _SafariVer,
+	verOpera : _OperaVer,
+	verAndroid : _AndroidVer,
+	veriOS: _iOSVer
+}
+
+
+
+$(function() {
+	$('#js--userAgent').text(_ua);
+	redirect();
+})
+
+function redirect(){
+	var urlMobile = location.href.match(/sp/);
+	if(!urlMobile && ua.isMobile){
+		var mobileLocation = "/sp"+location.pathname;
+		location.href = mobileLocation;
+	}else if(urlMobile && !ua.isMobile){
+		location.href = location.href.replace("/sp/","/");
+	}
+}
+</script>
+
+</html>

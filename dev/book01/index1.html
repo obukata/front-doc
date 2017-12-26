@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">コア JavaScript 言語</h1>
+							<p class="hero_text">2016.07.02</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">基本的な変数や関数などの扱いについて</h2>
+						<p>変数を作る時は、<span class="text--code">var</span>を使って宣言する。</p>
+						<div class="section_code"><!--
+-->var x;
+x = 0;<!--
+						--></div>
+
+						<p>変数の中には複数のプロパティを持つ<span class="text--strong">オブジェクト</span>なんてのもあります。<br>変数とオブジェクトは別物？だったりとか、そんなのは知りません。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// オブジェクトの定義の仕方はこんな感じ。</span>
+var book = {
+	topic: "JavaScript",
+	fat: true
+};
+
+<span class="text--comment">// 略してこんなのもあり。</span>
+book.contents = {};
+book.author = "Flanagan";
+
+<span class="text--comment">// 値の中身みるにはこんな感じ。</span>
+book.topic
+book["fat"]<!--
+						--></div>
+
+						<p>最初はややこしい配列。しっかり覚えましょう。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// 配列の宣言</span>
+var primes = [2, 3, 5, 7];
+
+<span class="text--comment">// 配列の操作</span>
+primes[0]
+primes.length
+primes[primes.length - 1]
+primes[4] = 9;
+primes[4] = 11;
+var empty = [];
+empty.length<!--
+						--></div>
+
+						<p>超ややこしいけど、配列の中に配列も入れれますよ。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// 配列の中にプロパティを持つもの。</span>
+var points = [
+	{x:0, y:0},
+	{x:1, y:1}
+];
+
+<span class="text--comment">// pointsの配列の一番初めのプロパティxの値の出し方。</span>
+points[0].x;
+
+<span class="text--comment">// プロパティの中の配列の中に配列が入ってる感じ。ややこしい</span>
+var data = {
+	trial1: [[1,2], [3,4]],
+	trial2: [[2,3], [4,5]]
+};
+
+<span class="text--comment">// dataオブジェクトのtrial1プロパティの配列0番目の中の配列1番目の値。</span>
+data.trial1[0][1];<!--
+						--></div>
+
+						<p>簡単な計算。</p>
+						<div class="section_code"><!--
+-->3 + 2
+3 - 2
+3 * 2
+3 / 2
+
+<span class="text--comment">// さっきのややこしいのでも基本的にはただの減算。</span>
+points[1].x - points[0].x
+
+<span class="text--comment">// 文字列の加算はくっつきます。「32」</span>
+"3" + "2"<!--
+						--></div>
+
+						<p>省略形の計算式。</p>
+						<div class="section_code"><!--
+-->var count = 0;
+count++;
+count--;
+count += 2;
+count *= 3;<!--
+						--></div>
+
+						<p>比較系。超基本、必ず使う。</p>
+						<div class="section_code"><!--
+-->var x = 2, y = 3;
+x == y
+x != y
+x < y
+x <= y
+x > y
+x >= y
+
+"two" == "three"
+<span class="text--comment">// ややこしいけど、この比較はアルファベット順です。twよりthのが先なのでfalse</span>
+"two" > "three"
+
+false == (x > y);
+
+(x == 2) && (y == 3)
+(x > 3) || (y < 3)
+!(x == y)<!--
+						--></div>
+
+						<p>関数の宣言についてです。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// 関数の宣言の仕方2種。</span>
+function plus1(x) {
+	return x+1;
+}
+plus1(y)
+
+var square = function(x) {
+	return x*x;
+};
+square(plus1(y))<!--
+						--></div>
+
+						<p>どんどんややこしくなりますよ。オブジェクトに関数を代入すると、その関数の事を<span class="text--strong">メソッド</span>と呼びますよ。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// a変数に空の配列を作って、そこにpush()関数を代入。reverse()関数を代入。</span>
+var a = [];
+a.push(1,2,3);
+a.reverse();<!--
+						--></div>
+
+						<p>はい来ました。this。これなによ。ややこしいよ。今回の<span class="text--code">this</span>はpoints変数の中の配列を参照します。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// この関数はX座標、Y座標の2点間の距離を求める関数です。</span>
+points.dist = function() {
+	var p1 = this[0];
+	var p2 = this[1];
+	var a = p2.x - p1.x;
+	var b = p2.y - p1.y;
+	<span class="text--comment">// あ、Math.sqrtってのは平方根の計算です。</span>
+	return Math.sqrt(a*a + b*b);
+};
+points.dist();<!--
+						--></div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">制御文について</h2>
+						<p>基本中の基本。<span class="text--code">if</span>とか<span class="text--code">while</span>とか<span class="text--code">for</span>の使用例。</p>
+						<div class="section_code"><!--
+-->function abs(x) {
+	if(x >= 0) {
+		return x;
+	}else {
+		return -x;
+	}
+}
+
+<span class="text--comment">// n * n-1 * n-1-1 … で、n>1になるまで。</span>
+function factorial(n) {
+	var product = 1;
+	while(n > 1) {
+		product *= n;
+		n--;
+	}
+	return product;
+}
+factorial(4);
+
+<span class="text--comment">// i==2 で、 i * i+1 * i+1+1 … で、i<=nになるまで。</span>
+function factorial2(n) {
+	var i, product = 1;
+	for(i = 2, i <= n; i++)
+		product *= i;
+		return product;
+}
+factorial2(5);<!--
+						--></div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">コンストラクタ</h2>
+						<p>すごいややこしいよ。とりあえず、今のうちは適当に頭に入れておく。<br>オブジェクトを作成して、初期化する関数オブジェクトの事を<span class="text--strong">コンストラクタ</span>と言います。<br><span class="text--strong">インスタンス</span>を生成するときには<span class="text--code">new</span>を使って宣言します。</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// 座標2点間の距離を計算する関数。</span>
+function point(x,y) {
+	this.x = x;
+	this.y = y;
+}
+
+<span class="text--comment">// インスタンスを生成。</span>
+var p = new Point(1, 1);
+
+<span class="text--comment">// コンストラクタを生成すると、プロトタイプオブジェクトが使えるので、これに関数を代入。</span>
+<span class="text--comment">// Pointオブジェクト用のメソッドを定義します。</span>
+Point.prototype.r = function() {
+	return Math.sqrt(
+		this.x * this.x +
+		this.y * this.y
+	);
+};
+
+<span class="text--comment">// Pointオブジェクトpと、今後生成されるPointオブジェクトにr()メソッドが継承される。</span>
+p.r()<!--
+						--></div>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+var x;
+x = 0;
+
+var book = {
+	topic: "JavaScript",
+	fat: true
+};
+
+book.topic
+book["fat"]
+book.author = "Flanagan";
+book.contents = {};
+
+var primes = [2, 3, 5, 7];
+primes[0]
+primes.length
+primes[primes.length - 1]
+primes[4] = 9;
+primes[4] = 11;
+var empty = [];
+empty.length
+
+var points = [
+	{x:0, y:0},
+	{x:-1, y:1}
+];
+
+var data = {
+	trial1: [[1,2], [3,4]],
+	trial2: [[2,3], [4,5]]
+};
+
+console.log(data.trial1[0][3]);
+
+var x = 2, y = 3;
+x == y;
+x != y;
+x < y;
+x <= y;
+x > y;
+x >= y;
+
+"two" == "three";
+"two" > "three";
+
+false == (x > y);
+
+(x == 2) && (y == 3);
+(x > 3) || (y < 3);
+!(x == y);
+
+function plus1(x) {
+	return x+1;
+}
+plus1(y)
+
+var square = function(x) {
+	return x*x;
+};
+square(plus1(y))
+
+points.dist = function() {
+	var p1 = this[0];
+	var p2 = this[1];
+	var a = p2.x - p1.x;
+	console.log(a);
+	var b = p2.y - p1.y;
+	console.log(b);
+	return Math.sqrt(a*a + b*b);
+};
+console.log(points.dist());
+points.dist();
+
+function abs(x) {
+	if(x >= 0) {
+		return x;
+	}else {
+		return -x;
+	}
+}
+
+function factorial(n) {
+	var product = 1;
+	while(n > 1) {
+		product *= n;
+		n--;
+	}
+	return product;
+}
+factorial(4);
+
+function factorial2(n) {
+	var i, product = 1;
+	for(i = 2; i <= n; i++)
+		product *= i;
+	return product;
+}
+factorial2(5);
+</script>
+</html>

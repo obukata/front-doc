@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">JavaScriptによる住宅ローン計算機</h1>
+							<p class="hero_text">2016.07.14</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">この例の特徴</h2>
+						<p>この例には以下のようなJavaScript言語の多くの特徴、重要な技術が含まれています。とりあえず意味は分からなくても大まかな流れが理解出来ていれば良しです。</p>
+						<ul>
+							<li>ドキュメント中の要素を検索する方法</li>
+							<li>フォーム入力要素からユーザーの入力を取得する方法</li>
+							<li>ドキュメント要素のHTMLコンテンツを設定する方法</li>
+							<li>ブラウザ中にデータを保管する方法</li>
+							<li>HTTPをスクリプト制御する方法</li>
+							<li>canvas要素を使ってグラフィックを描画する方法</li>
+						</ul>
+						<h2 class="section_title">DEMO</h2>
+						<div class="section_run">
+							<style>
+								.output {
+									font-weight: 600;
+								}
+								#payment {
+									text-decoration: underline;
+								}
+								#graph {
+									border: 3px solid #252328;
+									margin-top: 1em;
+									width: 100%;
+									box-sizing: border-box;
+									background: #fff;
+								}
+								th,
+								td {
+									vertical-align: top;
+								}
+							</style>
+							<div class="comp--table">
+								<div class="comp--table_row">
+									<div class="comp--table_head">ローンデータを入力してください。:</div>
+									<div class="comp--table_body">価格、利息総額、利子支払い</div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">価格 (¥):</div>
+									<div class="comp--table_body"><input id="amount" type="text" onchange="calculate();"></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">年利 (%):</div>
+									<div class="comp--table_body"><input id="apr" type="text" onchange="calculate();"></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">返済期限 (years):</div>
+									<div class="comp--table_body"><input id="years" type="text" onchange="calculate();"></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">郵便番号 (to find lenders):</div>
+									<div class="comp--table_body"><input id="zipcode" type="text" onchange="calculate();"></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">おおよその支払い:</div>
+									<div class="comp--table_body"><span class="btn--ready" onclick="calculate();">計算する</span></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">毎月の支払い額:</div>
+									<div class="comp--table_body">¥<span class="output" id="payment"></span></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">支払い総額:</div>
+									<div class="comp--table_body">¥<span class="output" id="total"></span></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">利息総額:</div>
+									<div class="comp--table_body">¥<span class="output" id="totalinterest"></span></div>
+								</div>
+								<div class="comp--table_row">
+									<div class="comp--table_head">スポンサー:</div>
+									<div class="comp--table_body" colspan="2">同意してローンの申し込みをします。:<div id="lenders"></div></div>
+								</div>
+							</div>
+							<div rowspan="8"><canvas id="graph" width="954" height="250"></canvas></div>
+						</div>
+						<p>すごく長い。ややこしい。でも一つ一つそのうち理解できるようになります。頑張る。<br>JavaScriptを使えればこんな事が出来るんだ！くらいに見るといいかも。<br>あと、ローンの計算方法とかは調べて！詳しくは調べて！</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// ブラウザがサポートしているならば、ECMAScript 5のstrictモードを使います。</span>
+"use strict";
+
+function calculate() {
+
+	<span class="text--comment">// ドキュメント中の入力要素、出力要素を検索します。</span>
+	var amount = document.getElementById("amount");
+	var apr = document.getElementById("apr");
+	var years = document.getElementById("years");
+	var zipcode = document.getElementById("zipcode");
+	var payment = document.getElementById("payment");
+	var total = document.getElementById("total");
+	var totalinterest = document.getElementById("totalinterest");
+
+
+	<span class="text--comment">// 入力要素からユーザーの入力を取得します。データのバリデートはしません。</span>
+	<span class="text--comment">// parseFloat() は文字列→数値に変換しますよ。</span>
+	var principal = parseFloat(amount.value);
+	<span class="text--comment">// 利息をパーセント表記から数値に変更します。</span>
+	var interest = parseFloat(apr.value) / 100 / 12;
+	<span class="text--comment">// 支払い回数を年→月に変換します。</span>
+	var payments = parseFloat(years.value) * 12;
+
+	<span class="text--comment">// 毎月の支払額を計算します。</span>
+	<span class="text--comment">// Math.pow(a,b) は a^b です。</span>
+	<span class="text--comment">// 利息5%の場合：1 + 0.05 ^ 支払い回数（月）</span>
+	var x = Math.pow(1 + interest, payments);
+	<span class="text--comment">// (価格 * x * 利息) / (x - 1)</span>
+	var monthly = (principal * x * interest) / (x - 1);
+
+	<span class="text--comment">// 計算結果が有限の値になった場合。</span>
+	<span class="text--comment">// ifFinite() は有限数なのかどうか。booleanで返します。</span>
+	if (isFinite(monthly)) {
+		<span class="text--comment">// 小数点以下2桁の丸め処理です。</span>
+		<span class="text--comment">// toFixed(x) で、小数点以下x桁まで丸めます。</span>
+		payment.innerHTML = monthly.toFixed(2);
+		total.innerHTML = (monthly * payments).toFixed(2);
+		totalinterest.innerHTML = ((monthly * payments) - principal).toFixed(2);
+
+		<span class="text--comment">// save関数を実行。次回ユーザーが再訪した時に元に戻せるように入力を保存。</span>
+		save(amount.value, apr.value, years.value, zipcode.value);
+
+		<span class="text--comment">// 広告表示に関する処理。</span>
+		try {
+			<span class="text--comment">// 例外が発生しているか検査。</span>
+			getLenders(amount.value, apr.value, years.value, zipcode.value);
+		}
+		<span class="text--comment">// 例外が発生していても無視。（指示なし。）</span>
+		catch(e) { }
+
+		<span class="text--comment">// 最後。ローン残高や、利息、支払いのグラフを表示する。</span>
+		chart(principal, interest, monthly, payments);
+	}
+	<span class="text--comment">// 計算結果が数値以外のもの、無限になった場合は、入力が完全ではないか間違っている。</span>
+	<span class="text--comment">// 以前に表示していた内容を消去する。</span>
+	else {
+		payment.innerHTML = "";
+		total.innerHTML = ""
+		totalinterest.innerHTML = "";
+		<span class="text--comment">// グラフを消去。</span>
+		chart();
+	}
+}
+
+<span class="text--comment">// ユーザーの入力を localStorage オブジェクトのプロパティに保存する。</span>
+<span class="text--comment">// localStorage はHTML5で追加されたAPIで、 cookie のようにユーザーのローカルにデータを保存できます。cookieより簡単！</span>
+function save(amount, apr, years, zipcode) {
+	if (window.localStorage) {
+		localStorage.loan_amount = amount;
+		localStorage.loan_apr = apr;
+		localStorage.loan_years = years;
+		localStorage.loan_zipcode = zipcode;
+	}
+}
+
+<span class="text--comment">// ドキュメントが読み込まれたときに自動的に入力フィールドを元に戻す。</span>
+window.onload = function() {
+
+	<span class="text--comment">// ブラウザが localStrage をサポートしていて、データが保存されていれば。</span>
+	if (window.localStorage && localStorage.loan_amount) {
+		document.getElementById("amount").value = localStorage.loan_amount;
+		document.getElementById("apr").value = localStorage.loan_apr;
+		document.getElementById("years").value = localStorage.loan_years;
+		document.getElementById("zipcode").value = localStorage.loan_zipcode;
+	}
+};
+
+<span class="text--comment">// ユーザーの入力をサーバーサイドのスクリプトに渡す。</span>
+<span class="text--comment">// 今回の仮想例では実装していないが、このスクリプトから地元の金融業者一覧を返したり、そんなサービスをしたい。</span>
+function getLenders(amount, apr, years, zipcode) {
+
+	<span class="text--comment">// ブラウザが XMLHttpRequest オブジェクトをサポートしていない場合は何もしません。</span>
+	<span class="text--comment">// XMLHttpRequest は、クライアントとサーバーの間でデータを伝送する機能をクライアント側で提供するAPIです。</span>
+	<span class="text--comment">// 小難しいけど、非同期通信？AJAX？みたいなあんな感じの事ができます。</span>
+	if (!window.XMLHttpRequest) return;
+
+	<span class="text--comment">// 金融業者のリストを表示する要素を検索する。</span>
+	var ad = document.getElementById("lenders");
+	<span class="text--comment">// ない場合は何もしません。</span>
+	if (!ad) return;
+
+	<span class="text--comment">// ユーザーの入力をURL中の検索パラメーターとしてエンコードする。</span>
+	<span class="text--comment">// getLenders.php（仮想のサービスURL）</span>
+	var url = "getLenders.php" +
+		"?amt=" + encodeURIComponent(amount) +
+		"&apr=" + encodeURIComponent(apr) +
+		"&yrs=" + encodeURIComponent(years) +
+		"&zip=" + encodeURIComponent(zipcode);
+
+	<span class="text--comment">// URLのコンテンツを、XMLHttpRequest オブジェクトを使って取得します。</span>
+	<span class="text--comment">// インスタンス生成しますよ。インスタンスですよ。これ嫌いです。</span>
+	var req = new XMLHttpRequest();
+	req.open("GET", url);
+	req.send(null);
+
+	<span class="text--comment">// getLenders関数を終える前に、イベントハンドラ関数を登録しておきます。</span>
+	<span class="text--comment">// この関数は後ほど、HTMLサーバーからレスポンスが届いたときに呼び出されます。</span>
+	<span class="text--comment">// このような非同期プログラミングは、クライアントサイドJavaScriptではよく出てきますよ。</span>
+	req.onreadystatechange = function() {
+		<span class="text--comment">// 正常なレスポンスを受け取った場合。</span>
+		if (req.readyState == 4 && req.status == 200) {
+
+			<span class="text--comment">// HTTPレスポンス文字列。</span>
+			var response = req.responseText;
+			<span class="text--comment">// JS配列として解釈します。</span>
+			var lenders = JSON.parse(response);
+
+			<span class="text--comment">// lenderオブジェクトの配列をHTML文字列に変換します。</span>
+			var list = "";
+			for(var i = 0; i < lenders.length; i++) {
+				list += "&lt;li>&lt;a href='" + lenders[i].url + "'>" +
+					lenders[i].name + "&lt;/a>";
+			}
+
+			<span class="text--comment">// 前述した要素中にHTMLを表示する。</span>
+			ad.innerHTML = "&lt;ul>" + list + "&lt;/ul>"; 
+		}
+	}
+}
+
+<span class="text--comment">// HTMLのcanvas要素の中に、月ごとのローン残高や、利息、支払い額をグラフ表示する関数です。</span>
+<span class="text--comment">// 引数なしで呼び出された場合→chart()は、グラフを消去します。</span>
+function chart(principal, interest, monthly, payments) {
+	<span class="text--comment">// canvasタグを取得。</span>
+	var graph = document.getElementById("graph");
+	<span class="text--comment">// canvas要素を消去して、初期化する。これはこんなもんとしておいて下さい。</span>
+	graph.width = graph.width;
+
+	<span class="text--comment">// 引数なしで呼び出された場合や、ブラウザがcanvas要素の中のグラフィック機能をサポートしていない場合は何もしない。</span>
+	if (arguments.length == 0 || !graph.getContext) return;
+
+	<span class="text--comment">// canvas用の context オブジェクトを取得して、描画APIを使えるようにします。</span>
+	<span class="text--comment">// getContext(x) xの中は、2次元の2d、3次元のwebglなどありますよ。</span>
+	var g = graph.getContext("2d");
+	<span class="text--comment">// 描画領域の大きさを取得します。</span>
+	var width = graph.width, height = graph.height;
+
+	<span class="text--comment">// 支払い回数をピクセルに変換します。</span>
+	<span class="text--comment">// n * グラフ幅 / 支払い回数（月）</span>
+	function paymentToX(n) { return n * width / payments; }
+	<span class="text--comment">// 支払い額をピクセルに変換します。</span>
+	<span class="text--comment">// グラフ高さ - (a * グラフ高さ / ())</span>
+	function amountToY(a) { return height - (a * height / (monthly * payments * 1.05));}
+
+	<span class="text--comment">// 支払い額については、(0, 0)から、(payments, monthly * payments)まで直線を引く。</span>
+	<span class="text--comment">// 左下から開始。</span>
+	g.moveTo(paymentToX(0), amountToY(0));
+	<span class="text--comment">// 右上方向に描画する。</span>
+	g.lineTo(paymentToX(payments), amountToY(monthly * payments));
+	<span class="text--comment">// 右下方向に移動。</span>
+	g.lineTo(paymentToX(payments), amountToY(0));
+	<span class="text--comment">// 始点に戻る。</span>
+	g.closePath();
+	<span class="text--comment">// 色つける。暗いグレー。</span>
+	g.fillStyle = "#a2a2a2";
+	<span class="text--comment">// 塗りつぶす。</span>
+	g.fill();
+	<span class="text--comment">// フォントの定義です。</span>
+	g.font = "bold 12px sans-serif";
+	<span class="text--comment">// 凡例中にテキストを表示する。</span>
+	g.fillText("支払い総額", 20, 20);
+
+	<span class="text--comment">// 元本の累積総額は非線形ではないので、グラフ化する場合には工夫します。</span>
+	var equity = 0;
+	<span class="text--comment">// 新たな図形作成開始</span>
+	g.beginPath();
+	<span class="text--comment">// 左下から開始。</span>
+	g.moveTo(paymentToX(0), amountToY(0));
+	for(var p = 1; p <= payments; p++) {
+		<span class="text--comment">// 支払いごとに、利息部分の計算をする。</span>
+		var thisMonthsInterest = (principal - equity) * interest;
+		equity += (monthly - thisMonthsInterest);
+		g.lineTo(paymentToX(p), amountToY(equity));
+	}
+	<span class="text--comment">// X座標まで線を引く。</span>
+	g.lineTo(paymentToX(payments), amountToY(0));
+	<span class="text--comment">// 始点に戻る。</span>
+	g.closePath();
+	<span class="text--comment">// 明るいグレー。</span>
+	g.fillStyle = "#bfbfbf";
+	<span class="text--comment">// 塗りつぶす。</span>
+	g.fill();
+	<span class="text--comment">// フォント設定。</span>
+	g.fillText("利息総額", 20, 35);
+
+	<span class="text--comment">// 前述した内容と同様の処理。</span>
+	var bal = principal;
+	g.beginPath();
+	g.moveTo(paymentToX(0), amountToY(bal));
+	for(var p = 1; p <= payments; p++) {
+		var thisMonthsInterest = bal * interest;
+		bal -= (monthly - thisMonthsInterest);
+		g.lineTo(paymentToX(p), amountToY(bal));
+	}
+	g.lineWidth = 3;
+	g.stroke();
+	g.fillStyle = "#252328";
+	g.fillText("価格", 20,50);
+
+	<span class="text--comment">// ここでX座標の目盛りと、年数を描きます。</span>
+	<span class="text--comment">// 目盛り上のテキストを中央揃えにする。</span>
+	g.textAlign="center";
+	<span class="text--comment">// X軸のY座標</span>
+	var y = amountToY(0);
+	<span class="text--comment">// 年ごとの処理。</span>
+	for(var year=1; year * 12 <= payments; year++) {
+		<span class="text--comment">// 目盛り位置を計算する。</span>
+		var x = paymentToX(year * 12);
+		<span class="text--comment">// 目盛りを描画する。</span>
+		g.fillRect(x - 0.5, y - 3, 1, 3);
+		<span class="text--comment">// X座標にラベルをつける。</span>
+		if (year == 1) g.fillText("年", x, y - 5);
+		<span class="text--comment">// 5年ごとに数値を描画する。</span>
+		if (year % 5 == 0 && year * 12 !== payments)
+			g.fillText(String(year), x, y - 5);
+	}
+
+	<span class="text--comment">// 右端に支払い額を描画する。</span>
+	<span class="text--comment">// テキストを右寄せにする。</span>
+	g.textAlign = "right";
+	<span class="text--comment">// 上下は中央。</span>
+	g.textBaseline = "middle";
+	<span class="text--comment">// ラベルは2つつけます。</span>
+	var ticks = [monthly * payments, principal];
+	<span class="text--comment">// Y軸のX座標</span>
+	var rightEdge = paymentToX(payments);
+	<span class="text--comment">// ラベルごとの処理。</span>
+	for(var i = 0; i < ticks.length; i++) {
+		<span class="text--comment">// 目盛りのY座標を計算する。</span>
+		var y = amountToY(ticks[i]);
+		<span class="text--comment">// 目盛りを描画する。</span>
+		g.fillRect(rightEdge - 3, y - 0.5, 3, 1);
+		<span class="text--comment">// ラベルをつけます。</span>
+		g.fillText(String(ticks[i].toFixed(0)), rightEdge - 5, y);
+	}
+}<!--
+						--></div>
+
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+"use strict";
+
+function calculate() {
+
+	var amount = document.getElementById("amount");
+	var apr = document.getElementById("apr");
+	var years = document.getElementById("years");
+	var zipcode = document.getElementById("zipcode");
+	var payment = document.getElementById("payment");
+	var total = document.getElementById("total");
+	var totalinterest = document.getElementById("totalinterest");
+
+	var principal = parseFloat(amount.value);
+	var interest = parseFloat(apr.value) / 100 / 12;
+	var payments = parseFloat(years.value) * 12;
+
+	var x = Math.pow(1 + interest, payments);
+	var monthly = (principal*x*interest)/(x-1);
+
+	if (isFinite(monthly)) {
+
+		payment.innerHTML = monthly.toFixed(2);
+		total.innerHTML = (monthly * payments).toFixed(2);
+		totalinterest.innerHTML = ((monthly*payments)-principal).toFixed(2);
+
+		save(amount.value, apr.value, years.value, zipcode.value);
+
+		try {
+			getLenders(amount.value, apr.value, years.value, zipcode.value);
+		}
+		catch(e) { }
+
+		chart(principal, interest, monthly, payments);
+	}
+	else {
+
+		payment.innerHTML = "";
+		total.innerHTML = ""
+		totalinterest.innerHTML = "";
+		chart();
+	}
+}
+
+function save(amount, apr, years, zipcode) {
+	if (window.localStorage) {
+		localStorage.loan_amount = amount;
+		localStorage.loan_apr = apr;
+		localStorage.loan_years = years;
+		localStorage.loan_zipcode = zipcode;
+	}
+}
+
+window.onload = function() {
+
+	if (window.localStorage && localStorage.loan_amount) {
+		document.getElementById("amount").value = localStorage.loan_amount;
+		document.getElementById("apr").value = localStorage.loan_apr;
+		document.getElementById("years").value = localStorage.loan_years;
+		document.getElementById("zipcode").value = localStorage.loan_zipcode;
+	}
+};
+
+function getLenders(amount, apr, years, zipcode) {
+
+	if (!window.XMLHttpRequest) return;
+
+
+	var ad = document.getElementById("lenders");
+	if (!ad) return;
+
+	var url = "getLenders.php" +
+		"?amt=" + encodeURIComponent(amount) +
+		"&apr=" + encodeURIComponent(apr) +
+		"&yrs=" + encodeURIComponent(years) +
+		"&zip=" + encodeURIComponent(zipcode);
+
+	var req = new XMLHttpRequest();
+	req.open("GET", url);
+	req.send(null);
+
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200) {
+
+			var response = req.responseText;
+			var lenders = JSON.parse(response);
+
+			var list = "";
+			for(var i = 0; i < lenders.length; i++) {
+				list += "<li><a href='" + lenders[i].url + "'>" +
+					lenders[i].name + "</a>";
+			}
+
+			ad.innerHTML = "<ul>" + list + "</ul>"; 
+		}
+	}
+}
+
+function chart(principal, interest, monthly, payments) {
+	var graph = document.getElementById("graph");
+	graph.width = graph.width;
+
+	if (arguments.length == 0 || !graph.getContext) return;
+
+	var g = graph.getContext("2d");
+	var width = graph.width, height = graph.height;
+
+	function paymentToX(n) { return n * width/payments; }
+	function amountToY(a) { return height-(a * height/(monthly*payments*1.05));}
+
+	g.moveTo(paymentToX(0), amountToY(0));
+	g.lineTo(paymentToX(payments),
+			 amountToY(monthly*payments));
+	g.lineTo(paymentToX(payments), amountToY(0));
+	g.closePath();
+	g.fillStyle = "#a2a2a2";
+	g.fill();
+	g.font = "bold 12px sans-serif";
+	g.fillText("支払い総額", 20,20);
+
+	var equity = 0;
+	g.beginPath();
+	g.moveTo(paymentToX(0), amountToY(0));
+	for(var p = 1; p <= payments; p++) {
+
+		var thisMonthsInterest = (principal-equity)*interest;
+		equity += (monthly - thisMonthsInterest);
+		g.lineTo(paymentToX(p),amountToY(equity));
+	}
+	g.lineTo(paymentToX(payments), amountToY(0));
+	g.closePath();
+	g.fillStyle = "#bfbfbf";
+	g.fill();
+	g.fillText("利息総額", 20,35);
+
+	var bal = principal;
+	g.beginPath();
+	g.moveTo(paymentToX(0),amountToY(bal));
+	for(var p = 1; p <= payments; p++) {
+		var thisMonthsInterest = bal*interest;
+		bal -= (monthly - thisMonthsInterest);
+		g.lineTo(paymentToX(p),amountToY(bal));
+	}
+	g.lineWidth = 3;
+	g.stroke();
+	g.fillStyle = "#252328";
+	g.fillText("価格", 20,50);
+
+	g.textAlign="center";
+	var y = amountToY(0);
+	for(var year=1; year*12 <= payments; year++) {
+		var x = paymentToX(year*12);
+		g.fillRect(x-0.5,y-3,1,3);
+		if (year == 1) g.fillText("年", x, y-5);
+		if (year % 5 == 0 && year*12 !== payments)
+			g.fillText(String(year), x, y-5);
+	}
+
+	g.textAlign = "right";
+	g.textBaseline = "middle";
+	var ticks = [monthly*payments, principal];
+	var rightEdge = paymentToX(payments);
+	for(var i = 0; i < ticks.length; i++) {
+		var y = amountToY(ticks[i]);
+		g.fillRect(rightEdge-3, y-0.5, 3,1);
+		g.fillText(String(ticks[i].toFixed(0)), rightEdge-5, y);
+	}
+}
+</script>
+</html>

@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+body.top .hero {
+  display: table;
+  height: 300px;
+  letter-spacing: 0.1em;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+body.top .hero .hero_body {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 0.5em;
+}
+body.top .hero .hero_title {
+  font-size: 3.8rem;
+}
+body.top .hero .hero_title_sub {
+  font-size: 1.6rem;
+  display: block;
+}
+body.top .hero .hero_text {
+  font-size: 1.2rem;
+}
+body.top .topics {
+  width: 960px;
+  margin: 0 auto;
+}
+body.top .topics .topics_item {
+  width: 300px;
+  padding: 2em 10px;
+  float: left;
+  text-align: center;
+}
+body.top .readmore {
+  text-align: center;
+}
+
+body.top .topics_item a,
+body.top .readmore a {
+  color: #ffffff;
+}
+body.top .topics_item a:hover,
+body.top .readmore a:hover {
+  opacity: 0.4;
+}
+
+/*# sourceMappingURL=top.css.map */

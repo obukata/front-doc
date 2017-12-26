@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="../assets/scripts/TweenMax.min.js"></script>
+<script src="../assets/scripts/ScrollMagic.js"></script>
+<script src="../assets/scripts/plugins/animation.gsap.js"></script>
+<script src="../assets/scripts/plugins/debug.addIndicators.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">Parallax</h1>
+							<p class="hero_text">2016.07.28</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+					</div>
+
+					<div class="demo_parallax">
+						<div id="is--scene01" class="demo_parallax_section01">
+							<p class="demo_parallax_title">TOUR <br>de <br>FRANCE <br>2016</p>
+							<p class="demo_parallax_title_bg">TOUR <br>de <br>FRANCE <br>2016</p>
+							<p class="demo_parallax_title2">2016.07.02 - 07.24</p>
+						</div>
+						<div class="demo_parallax_section_odd demo_parallax_section02">
+							<div id="is--scene02" class="demo_parallax_body">
+								<p class="demo_parallax_head">Jerseys, bouquets and promises...</p>
+								<p class="demo_parallax_text">Winner of his third Tour de France, Chris Froome wore the Yellow Jersey in controlling the competition beginning at the Bagnères-de-Luchon stage just until the Champs-Elysées. The Briton had to deal with new challengers from Adam Yates to Romain Bardet. The stage victories of Mark Cavendish, Peter Sagan and Tom Dumoulin contributed to the daily spectacle. Here is a look back at the 2016 Tour de France...</p>
+							</div>
+						</div>
+						<div id="is--scene03" class="demo_parallax_section_even demo_parallax_section03"></div>
+						<div class="demo_parallax_section_odd demo_parallax_section04">
+							<div id="is--scene04" class="demo_parallax_body">
+								<p class="demo_parallax_head">Jerseys, bouquets and promises...</p>
+								<p class="demo_parallax_text">Winner of his third Tour de France, Chris Froome wore the Yellow Jersey in controlling the competition beginning at the Bagnères-de-Luchon stage just until the Champs-Elysées. The Briton had to deal with new challengers from Adam Yates to Romain Bardet. The stage victories of Mark Cavendish, Peter Sagan and Tom Dumoulin contributed to the daily spectacle. Here is a look back at the 2016 Tour de France...</p>
+							</div>
+						</div>
+						<div id="is--scene05" class="demo_parallax_section_even demo_parallax_section05"></div>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<style>
+.demo_parallax {
+	margin: 2em 0;
+}
+.demo_parallax_title {
+	width: 80%;
+	max-width: 960px;
+	height: 4em;
+	position: absolute;
+	top: 150px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 5.0rem;
+	font-weight: 900;
+	line-height: 1;
+	letter-spacing: 0.1em;
+	color: #fabb00;
+	z-index: 200;
+}
+.demo_parallax_title_bg {
+	width: 80%;
+	max-width: 960px;
+	height: 4em;
+	position: absolute;
+	top: 320px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding-left: 20px;
+	font-size: 5.5rem;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: 0.1em;
+	color: rgba(255,255,255,0.3);
+	z-index: 100;
+}
+.demo_parallax_title2 {
+	width: 80%;
+	max-width: 960px;
+	height: 1em;
+	position: absolute;
+	top: 390px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-size: 1.6rem;
+	line-height: 1;
+	color: #fff;
+	z-index: 200;
+}
+.demo_parallax_section_odd {
+	position: relative;
+	background: #fff;
+	color: #000;
+	padding: 10%;
+}
+.demo_parallax_section_even {
+	position: relative;
+	background: #fff;
+	color: #fff;
+	padding: 10%;
+}
+.demo_parallax_section_odd:before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: -50px;
+	width: 100%;
+	height: 100px;
+	transform: skewY(-3deg);
+	background: #fff;
+	z-index: 100;
+}
+.demo_parallax_section_odd:after {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: -50px;
+	width: 100%;
+	height: 100px;
+	transform: skewY(3deg);
+	background: #fff;
+	z-index: 100;
+}
+.demo_parallax_body {
+	position: relative;
+	z-index: 200;
+	opacity: 0;
+}
+.demo_parallax_head {
+	font-size: 2.4rem;
+	font-weight: 600;
+}
+.demo_parallax_section01 {
+	position: relative;
+	height: 600px;
+	background: url(/assets/images/scrollmagic/index1/bg1.jpg) no-repeat;
+	background-size: cover;
+	background-position: center bottom;
+}
+.demo_parallax_section03 {
+	height: 250px;
+	background: url(/assets/images/scrollmagic/index1/bg2.jpg) no-repeat;
+	background-size: cover;
+	background-position: center 0px;
+}
+.demo_parallax_section05 {
+	height: 250px;
+	background: url(/assets/images/scrollmagic/index1/bg3.jpg) no-repeat;
+	background-size: cover;
+	background-position: center 0px;
+}
+@media screen and (max-width: 640px) {
+	.demo_parallax_section03 {
+		background-size: 250%;
+	}
+	.demo_parallax_section05 {
+		background-size: 250%;
+	}
+}
+</style>
+<script>
+window.onload = function() {
+	var controller = new ScrollMagic.Controller({globalSceneOptions: {triggerHook: "onEnter", duration: "200%"}});
+
+	var scene = new ScrollMagic.Scene({
+		triggerElement: "#is--scene01"
+	})
+	.setTween(".demo_parallax_title_bg", {transform: "translate3d(0px,-240px,0px)"})
+	.addTo(controller);
+
+	var scene = new ScrollMagic.Scene({
+		triggerElement: "#is--scene02"
+	})
+	.setTween("#is--scene02", {opacity: 1})
+	.addTo(controller);
+
+	var scene = new ScrollMagic.Scene({
+		triggerElement: "#is--scene03"
+	})
+	.setTween("#is--scene03", {backgroundPosition: "center -240px"})
+	.addTo(controller);
+
+	var scene = new ScrollMagic.Scene({
+		triggerElement: "#is--scene04"
+	})
+	.setTween("#is--scene04", {opacity: 1})
+	.addTo(controller);
+
+	var scene = new ScrollMagic.Scene({
+		triggerElement: "#is--scene05"
+	})
+	.setTween("#is--scene05", {backgroundPosition: "center -240px"})
+	.addTo(controller);
+}
+</script>
+</html>

@@ -1,0 +1,236 @@
+@charset "UTF-8";
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+@media screen and (max-width: 640px) {
+  .page_wrap {
+    min-width: 320px;
+  }
+
+  .header {
+    min-width: 320px;
+  }
+  .header .header_body {
+    min-width: 0;
+    margin: 0 15px;
+    padding: 0.5em 0;
+  }
+  .header .header_logo {
+    font-size: 1.2rem;
+  }
+
+  .main {
+    padding-bottom: 3rem;
+    background: #252328;
+  }
+
+  .footer .footer_body {
+    padding: 0.5em;
+  }
+
+  .line--title_bottom:after {
+    content: "";
+    display: block;
+    height: 1px;
+    margin: 12px auto;
+    position: relative;
+    width: 10px;
+  }
+
+  .text--code {
+    font-size: 1.0rem;
+  }
+
+  .btn--ready {
+    font-size: 1.0rem;
+  }
+
+  .comp--table {
+    display: block;
+    width: 100%;
+  }
+
+  .comp--table_row {
+    display: block;
+    margin: 0.5em 0;
+    padding: 0.5em 0;
+    border-top: 1px dashed #a2a2a2;
+  }
+  .comp--table_row:first-child {
+    border-top: none;
+  }
+
+  .comp--table_head {
+    display: block;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .comp--table_body {
+    display: block;
+    line-height: 1.5;
+  }
+}
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+@media screen and (max-width: 640px) {
+  body.top .hero {
+    height: 180px;
+  }
+  body.top .hero .hero_body {
+    padding: 0 15px;
+  }
+  body.top .hero .hero_title {
+    font-size: 2.6rem;
+  }
+  body.top .hero .hero_title_sub {
+    font-size: 1.2rem;
+  }
+  body.top .hero .hero_text {
+    font-size: 1.0rem;
+  }
+  body.top .topics {
+    width: 100%;
+  }
+  body.top .topics .topics_item {
+    width: 100%;
+    padding: 1em 15px;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+  }
+  body.top .readmore {
+    padding: 1em 0;
+  }
+}
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+@media screen and (max-width: 640px) {
+  body.page .hero {
+    height: 180px;
+  }
+  body.page .hero .hero_body {
+    padding: 0 15px;
+  }
+  body.page .hero .hero_title {
+    font-size: 2.6rem;
+  }
+  body.page .hero .hero_title_sub {
+    font-size: 1.2rem;
+  }
+  body.page .hero .hero_text {
+    font-size: 1.0rem;
+  }
+  body.page .section_body {
+    width: auto;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    padding-top: 3em;
+    line-height: 2;
+  }
+  body.page .section_body .section_title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+  body.page .section_body > p {
+    margin: 1em 0;
+  }
+  body.page .section_body > ul {
+    margin: 1em 0;
+  }
+  body.page .section_body > ul li {
+    padding-left: 17px;
+  }
+  body.page .section_body > ul li:before, body.page .section_body > ul li:after {
+    width: 12px;
+    height: 5px;
+  }
+}
+
+/*# sourceMappingURL=core_sp.css.map */

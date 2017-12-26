@@ -1,0 +1,515 @@
+@charset "UTF-8";
+/*　*/
+html {
+  color: #000;
+  background: #FFF;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+caption, th {
+  text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+q:before, q:after {
+  content: '';
+}
+
+abbr, acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  *font-size: 100%;
+}
+
+legend {
+  color: #000;
+}
+
+#yui3-css-stamp.cssreset {
+  display: none;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+.unactive {
+  pointer-events: none;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.is--table {
+  display: table;
+}
+
+.is--table_caption {
+  display: table-caption;
+}
+
+.is--table_row {
+  display: table-row;
+}
+
+.is--table_head {
+  display: table-cell;
+}
+
+.is--table_text {
+  display: table-cell;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+html, body {
+  width: 100%;
+  height: auto;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: NotoSans-Regular, "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, Arial, "ＭＳ ゴシック", "MS Gothic", monospace, "Osaka－等幅", "Osaka-mono", sans-serif;
+  line-height: 1.6;
+}
+html body {
+  font-size: 14px;
+  font-size: 1.4em;
+}
+
+html[lang="en"] {
+  font-size: 62.5%;
+  font-family: NotoSans-Regular, Helvetica, Arial, Verdana, sans-serif;
+  line-height: 1.6;
+}
+html[lang="en"] body {
+  font-size: 14px;
+  font-size: 1.4em;
+}
+
+.page_wrap {
+  min-width: 1040px;
+  font-weight: 100;
+}
+
+.header {
+  min-width: 1040px;
+  border-bottom: 1px solid #353338;
+  background: #252328;
+  color: #ffffff;
+}
+.header .header_body {
+  min-width: 960px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+.header .header_body:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.header .header_logo {
+  float: left;
+  line-height: 30px;
+}
+.header .header_github {
+  float: right;
+}
+.header .header_github img {
+  width: 30px;
+  height: auto;
+}
+
+.main {
+  padding-bottom: 7rem;
+  background: #252328;
+}
+
+.footer {
+  border-top: 1px solid #353338;
+  background: #252328;
+  color: #ffffff;
+}
+.footer .footer_body {
+  padding: 0.5em;
+  text-align: center;
+  font-size: 1.0rem;
+}
+
+.line--title_bottom:after {
+  background: #ffffff;
+  content: "";
+  display: block;
+  height: 2px;
+  margin: 18px auto;
+  position: relative;
+  width: 10px;
+}
+
+.line--color01:after {
+  background: #01a4a2;
+}
+
+.text--code {
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 0.5em 1em;
+  font-size: 1.2rem;
+}
+
+.text--comment {
+  color: #ababab;
+}
+
+.text--strong {
+  font-family: NotoSans-Bold;
+}
+
+.icon--attention {
+  position: relative;
+  padding-left: 20px;
+  display: inline-block;
+}
+.icon--attention:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 24px;
+  width: 6px;
+  height: 6px;
+  background: #a2a2a2;
+}
+.icon--attention:after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  width: 6px;
+  height: 14px;
+  background: #252328;
+}
+
+.btn--ready {
+  display: inline-block;
+  border-radius: 10px;
+  background: #252328;
+  color: #ffffff;
+  padding: 0.5em 1em;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+.comp--debuglog {
+  margin-top: 1em;
+  background: #F2F5F8;
+  color: #252328;
+  padding: 0.5em 1em;
+}
+.comp--debuglog > p {
+  margin: 0.5em 0;
+  font-weight: 600;
+}
+.comp--debuglog > pre {
+  margin: 0.5em 0;
+}
+
+.comp--table {
+  display: table;
+  width: 100%;
+}
+
+.comp--table_row {
+  display: table-row;
+}
+
+.comp--table_head,
+.comp--table_body {
+  display: table-cell;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header_logo a {
+  color: #ffffff;
+}
+
+.header_github a:hover {
+  opacity: 0.7;
+}
+
+.btn--ready:hover {
+  opacity: 0.7;
+}
+
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+body.top .hero {
+  display: table;
+  height: 300px;
+  letter-spacing: 0.1em;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+}
+body.top .hero .hero_body {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 0.5em;
+}
+body.top .hero .hero_title {
+  font-size: 3.8rem;
+}
+body.top .hero .hero_title_sub {
+  font-size: 1.6rem;
+  display: block;
+}
+body.top .hero .hero_text {
+  font-size: 1.2rem;
+}
+body.top .topics {
+  width: 960px;
+  margin: 0 auto;
+}
+body.top .topics .topics_item {
+  width: 300px;
+  padding: 2em 10px;
+  float: left;
+  text-align: center;
+}
+body.top .readmore {
+  text-align: center;
+}
+
+body.top .topics_item a,
+body.top .readmore a {
+  color: #ffffff;
+}
+body.top .topics_item a:hover,
+body.top .readmore a:hover {
+  opacity: 0.4;
+}
+
+/*　*/
+img {
+  vertical-align: bottom;
+}
+
+input,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+
+@font-face {
+  font-family: NotoSans-Regular;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Medium;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Medium.woff) format("woff");
+}
+@font-face {
+  font-family: NotoSans-Bold;
+  font-style: normal;
+  src: url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.otf) format("otf"), url(../../assets/fonts/notosans/Subset-NotoSansCJKjp-Bold.woff) format("woff");
+}
+body.page .main {
+  background: #F2F5F8;
+}
+body.page .hero {
+  display: table;
+  height: 300px;
+  letter-spacing: 0.1em;
+  width: 100%;
+  text-align: center;
+  background: #252328;
+  color: #ffffff;
+}
+body.page .hero .hero_body {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 0.5em;
+}
+body.page .hero .hero_title {
+  font-size: 3.8rem;
+}
+body.page .hero .hero_title_sub {
+  font-size: 1.6rem;
+  display: block;
+}
+body.page .hero .hero_text {
+  font-size: 1.2rem;
+}
+body.page .section_body {
+  width: 960px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  padding-top: 4em;
+  line-height: 2;
+}
+body.page .section_body .section_title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+body.page .section_body > p {
+  margin: 1em 0;
+}
+body.page .section_body > ul {
+  margin: 1em 0;
+}
+body.page .section_body > ul li {
+  position: relative;
+  padding-left: 20px;
+}
+body.page .section_body > ul li:before, body.page .section_body > ul li:after {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 6px;
+  position: absolute;
+  top: 1em;
+  left: 0;
+}
+body.page .section_body > ul li:before {
+  background: #a2a2a2;
+  margin-top: -6px;
+  transform: rotate(45deg);
+}
+body.page .section_body > ul li:after {
+  background: #252328;
+  margin-top: 0px;
+  transform: rotate(-45deg);
+}
+body.page .section_body .section_code {
+  white-space: pre-wrap;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 2em;
+  font-size: 1.0rem;
+  line-height: 1.5;
+  margin: 1em 0;
+  letter-spacing: 0.1em;
+}
+
+/*# sourceMappingURL=core.css.map */

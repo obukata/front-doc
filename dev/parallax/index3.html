@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../assets/scripts/skrollr.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">skrollr</h1>
+							<p class="hero_text">2017.08.08</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+					</div>
+
+					<div class="scroll_data">scroll: <span id="is--scroll-data">0</span>px</div>
+
+					<div class="skrollr">
+						<div class="skrollr_contents01 skrollr_body">
+							<div class="skrollr_contents01_img skrollr_contents_img" data-0="opacity:0;" data-200="opacity:1;"><img src="https://unsplash.it/200/200?image=23" alt=""></div>
+						</div>
+						<div class="skrollr_contents02 skrollr_body">
+							<div class="skrollr_contents02_img skrollr_contents_img" data-200="opacity:0;" data-400="opacity:1;"><img src="https://unsplash.it/200/200?image=26" alt=""></div>
+						</div>
+						<div class="skrollr_contents03 skrollr_body">
+							<div class="skrollr_contents03_img skrollr_contents_img" data-400="opacity:0;" data-600="opacity:1;"><img src="https://unsplash.it/200/200?image=28" alt=""></div>
+						</div>
+						<div class="skrollr_contents04 skrollr_body">
+							<div class="skrollr_contents04_img skrollr_contents_img" data-600="opacity:0;" data-800="opacity:1;"><img src="https://unsplash.it/200/200?image=3" alt=""></div>
+						</div>
+					</div>
+
+
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<style>
+.skrollr {
+}
+.skrollr_body {
+	width: 960px;
+	margin: 0 auto;
+	padding: 60px 0;
+
+}
+.skrollr_body:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.skrollr_contents_img {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 8px solid #fff;
+	box-shadow: 0px 0px 6px #cecece;
+}
+.skrollr_body:nth-child(odd) .skrollr_contents_img {
+	float: left;
+	margin-left: 120px;
+}
+.skrollr_body:nth-child(even) .skrollr_contents_img {
+	float: right;
+	margin-right: 120px;
+}
+
+/* scroll量判定 */
+.scroll_data {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: rgba(0,0,0,0.2);
+	padding: 20px;
+	text-align: center;
+}
+</style>
+<script>
+$(function() {
+	skrollr.init();
+	scroll_data();
+});
+
+function scroll_data() {
+	$(window).on('scroll', function() {
+		var scrollDataWrap = document.getElementById("is--scroll-data");
+		scrollDataWrap.innerHTML = window.pageYOffset;
+	})
+}
+</script>
+</html>
