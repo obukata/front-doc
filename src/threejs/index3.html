@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">いろんな形</h1>
+							<p class="hero_text">2018.02.06</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+					</div>
+
+					<div class="demo_threejs">
+						<canvas id="threejsDemo01"></canvas>
+						<canvas id="threejsDemo02"></canvas>
+						<canvas id="threejsDemo03"></canvas>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+window.addEventListener('load', () => {
+	'use strict'
+
+	threejsDemo01()
+	threejsDemo02()
+	threejsDemo03()
+
+}, false)
+
+function threejsDemo01() {
+	const width = 150
+	const height = 150
+
+	const renderer = new THREE.WebGLRenderer({
+		canvas: document.querySelector('#threejsDemo01')
+	})
+	renderer.setPixelRatio(window.devicePixelRatio)
+	renderer.setSize(width, height)
+
+	const scene = new THREE.Scene()
+
+	const camera = new THREE.PerspectiveCamera(45, width / height)
+	camera.position.set(0, 0, +1000)
+
+	const geometry = new THREE.SphereGeometry(200, 32, 32)
+	const material = new THREE.MeshNormalMaterial()
+	const box = new THREE.Mesh(geometry, material)
+	scene.add(box)
+
+	tick()
+
+	function tick() {
+		box.rotation.y += 0.01
+		box.rotation.x += 0.01
+		box.rotation.z += 0.01
+		renderer.render(scene, camera)
+
+		requestAnimationFrame(tick)
+	}
+}
+
+function threejsDemo02() {
+	const width = 150
+	const height = 150
+
+	const renderer = new THREE.WebGLRenderer({
+		canvas: document.querySelector('#threejsDemo02')
+	})
+	renderer.setPixelRatio(window.devicePixelRatio)
+	renderer.setSize(width, height)
+
+	const scene = new THREE.Scene()
+
+	const camera = new THREE.PerspectiveCamera(45, width / height)
+	camera.position.set(0, 0, +1000)
+
+	const geometry = new THREE.ConeGeometry(200, 300, 3)
+	const material = new THREE.MeshNormalMaterial()
+	const box = new THREE.Mesh(geometry, material)
+	scene.add(box)
+
+	tick()
+
+	function tick() {
+		box.rotation.y += 0.01
+		box.rotation.x += 0.01
+		box.rotation.z += 0.01
+		renderer.render(scene, camera)
+
+		requestAnimationFrame(tick)
+	}
+}
+
+function threejsDemo03() {
+	const width = 150
+	const height = 150
+
+	const renderer = new THREE.WebGLRenderer({
+		canvas: document.querySelector('#threejsDemo03')
+	})
+	renderer.setPixelRatio(window.devicePixelRatio)
+	renderer.setSize(width, height)
+
+	const scene = new THREE.Scene()
+
+	const camera = new THREE.PerspectiveCamera(45, width / height)
+	camera.position.set(0, 0, +1000)
+
+	const geometry = new THREE.TorusGeometry(200, 30, 160, 100)
+	const material = new THREE.MeshNormalMaterial()
+	const box = new THREE.Mesh(geometry, material)
+	scene.add(box)
+
+	tick()
+
+	function tick() {
+		box.rotation.y += 0.01
+		box.rotation.x += 0.01
+		box.rotation.z += 0.01
+		renderer.render(scene, camera)
+
+		requestAnimationFrame(tick)
+	}
+}
+
+</script>
+</html>

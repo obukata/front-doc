@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">地球表示しただけ</h1>
+							<p class="hero_text">2017.07.07</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+					</div>
+
+					<div class="demo_threejs">
+						<div id="stage"></div>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+	'use strict';
+
+	threejsDemo01()
+
+}, false);
+
+function threejsDemo01() {
+	var scene;
+	var sphereEarth;
+	var camera;
+	var light;
+	var gridHelper;
+	var axisHelper;
+	var lightHelper;
+	var renderer;
+	var width = 640;
+	var height = 330;
+	var loader;
+
+	// ステージを作る
+	scene = new THREE.Scene();
+
+	// 追加：地球テクスチャーを準備
+	loader = new THREE.TextureLoader();
+	loader.load('https://82mou.github.io/threejs/img/earth.jpg', function(texture) {
+		createEarth(texture);
+		render();
+	});
+
+	// 追加：地球を作る
+	function createEarth(texture) {
+		sphereEarth = new THREE.Mesh(
+			new THREE.SphereGeometry(80, 20, 20), // 形状    
+			new THREE.MeshLambertMaterial({ // 材質         
+				map: texture
+			})
+		);
+		sphereEarth.position.set(0, 0, 0);
+		scene.add(sphereEarth);
+	};
+	 
+	// 平方光源を作る
+	light = new THREE.DirectionalLight(0xffffff, 1);
+	light.position.set(100, 130, 80);
+	scene.add(light);
+	 
+	// カメラを作る
+	camera = new THREE.PerspectiveCamera(60, width / height, 1, 1000);
+	camera.position.set(200, 100, 300);
+	camera.lookAt(scene.position);
+
+	// helper
+	gridHelper = new THREE.GridHelper(200, 20);
+	scene.add(gridHelper);
+	axisHelper = new THREE.AxisHelper(1000);
+	scene.add(axisHelper);
+	lightHelper = new THREE.DirectionalLightHelper(light, 20);
+	scene.add(lightHelper);
+ 
+	// renderer
+	renderer = new THREE.WebGLRenderer({ antialias: true });
+	renderer.setSize(width, height);
+	renderer.setClearColor(0xefefef);
+	renderer.setPixelRatio(window.devicePixelRatio);
+	document.getElementById('stage').appendChild(renderer.domElement);
+	 
+	function render() {
+		renderer.render(scene, camera);
+	}
+}
+</script>
+</html>
