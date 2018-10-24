@@ -107,6 +107,7 @@ body.page .section_body .section_code {
   line-height: 1.5;
   margin: 1em 0;
   letter-spacing: 0.1em;
+  word-break: break-all;
 }
 
 /*# sourceMappingURL=page.css.map */

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">nav</h1>
+							<p class="hero_text">2018.03.07</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+						<div class="demo">
+							<div id="visual" class="visual">
+								<div class="visual-body">
+									<p class="visual-text-intro style--font-mincho style--font-vertical">
+										<span id="intro01">満月の宵。</span><br>
+										<span id="intro02">光っては崩れ、うねっては崩れ、逆巻き、</span><br>
+										<span id="intro03">のた打つ浪のなかで</span><br>
+										<span id="intro04">互いに離れまいとつないだ手を</span><br>
+										<span id="intro05">苦しまぎれに俺が</span><br>
+										<span id="intro06">故意に振り切ったとき</span><br>
+										<span id="intro07">女は忽ち浪に呑まれて、</span><br>
+										<span id="intro08">たかく名を呼んだ。</span><br>
+										<br>
+										<span id="intro09">俺の名ではなかった</span>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="section_code"><!--
+-->
+.visual {
+	box-sizing: border-box;
+	position: relative;
+	background: url(https://images.unsplash.com/photo-1489900813628-b9169adf5de7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=03b5657991db1c970434b37469b56d37&auto=format&fit=crop&w=3872&q=80);
+	background-size: cover;
+	background-position: center center;
+	opacity: 0;
+	transition: all 1000ms;
+}
+.visual.style--visible {
+	opacity: 1;
+}
+.visual-body {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+.visual-text-intro {
+	color: #f7f7f7;
+	letter-spacing: 0.3em;
+	line-height: 2;
+	font-size: 14px;
+	padding: 50px 0;
+}
+.visual-text-intro span {
+	opacity: 0;
+	transition: all 1000ms;
+}
+.visual-text-intro .style--visible {
+	opacity: 1;
+}
+
+.style--font-mincho {
+	font-family: A1MinchoStd-Bold;
+}
+.style--font-vertical {
+	display: inline-block;
+	-webkit-writing-mode: vertical-rl;
+	-moz-writing-mode: vertical-rl;
+	-ms-writing-mode: tb-rl;
+	-ms-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+	white-space: nowrap;
+}
+
+<!--
+						--></div>
+					</div>
+				</section>
+
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+
+<style>
+.visual {
+	box-sizing: border-box;
+	position: relative;
+	background: url(https://images.unsplash.com/photo-1489900813628-b9169adf5de7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=03b5657991db1c970434b37469b56d37&auto=format&fit=crop&w=3872&q=80);
+	background-size: cover;
+	background-position: center center;
+	opacity: 0;
+	transition: all 1000ms;
+}
+.visual.style--visible {
+	opacity: 1;
+}
+.visual-body {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+.visual-text-intro {
+	color: #f7f7f7;
+	letter-spacing: 0.3em;
+	line-height: 2;
+	font-size: 14px;
+	padding: 50px 0;
+}
+.visual-text-intro span {
+	opacity: 0;
+	transition: all 1000ms;
+}
+.visual-text-intro .style--visible {
+	opacity: 1;
+}
+
+.style--font-mincho {
+	font-family: A1MinchoStd-Bold;
+}
+.style--font-vertical {
+	display: inline-block;
+	-webkit-writing-mode: vertical-rl;
+	-moz-writing-mode: vertical-rl;
+	-ms-writing-mode: tb-rl;
+	-ms-writing-mode: vertical-rl;
+	writing-mode: vertical-rl;
+	white-space: nowrap;
+}
+
+</style>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+	animationInitial()
+})
+
+function animationInitial() {
+	wait(1000).then(function() {
+		document.getElementById('visual').classList.add('style--visible')
+	}).then(function() {
+		return wait(3000).then(function() {
+			document.getElementById('intro01').classList.add('style--visible')
+			console.log('2')
+		})
+	}).then(function() {
+		return wait(2000).then(function() {
+			document.getElementById('intro02').classList.add('style--visible')
+			console.log('3')
+		})
+	}).then(function() {
+		return wait(4000).then(function() {
+			document.getElementById('intro03').classList.add('style--visible')
+			console.log('4')
+		})
+	}).then(function() {
+		return wait(2000).then(function() {
+			document.getElementById('intro04').classList.add('style--visible')
+			console.log('5')
+		})
+	}).then(function() {
+		return wait(3000).then(function() {
+			document.getElementById('intro05').classList.add('style--visible')
+			console.log('6')
+		})
+	}).then(function() {
+		return wait(2000).then(function() {
+			document.getElementById('intro06').classList.add('style--visible')
+			console.log('7')
+		})
+	}).then(function() {
+		return wait(3000).then(function() {
+			document.getElementById('intro07').classList.add('style--visible')
+		})
+	}).then(function() {
+		return wait(2000).then(function() {
+			document.getElementById('intro08').classList.add('style--visible')
+		})
+	}).then(function() {
+		return wait(4000).then(function() {
+			document.getElementById('intro09').classList.add('style--visible')
+		})
+	})
+}
+
+function wait(time) {
+	return new Promise(function (resolve) {
+		setTimeout(resolve, time)
+	})
+}
+</script>
+</body>
+</html>
