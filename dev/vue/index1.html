@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">はじめに</h1>
+							<p class="hero_text">2018.11.04</p>
+						</div>
+
+
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">Vue.jsの基本機能</h2>
+						<p>Vueをとりあえず動かす手順は以下3つ</p>
+						<ul>
+							<li>CDN版Vue.jsを読み込む</li>
+							<li>HTMLにVueを動かす要素を用意する</li>
+							<li><span class="text--code">new Vue()</span>にてVueインスタンスを生成する</li>
+						</ul>
+						<p>Vueを動かす要素ってのは↓みたいな感じ</p>
+						<div class="section_code"><!--
+--><span class="text--comment">// マウントする#app</span>
+&lt;div id="app">
+	<span class="text--comment">// {{ 変数 }} のような形なテンプレート</span>
+	&lt;p>{{ message }}&lt;/p>
+
+	<span class="text--comment">// v-for="" でfor文がかけます。 item in 変数 にて、配列を格納してる変数の内容を全て吐き出す。</span>
+	&lt;ol>
+		&lt;li v-for="item in list">{{ item }}&lt;/li>
+	&lt;/ol>
+
+	<span class="text--comment">// v-on:click はjQueryの element.on('click', handleClick())・addEventListener('click', handleClick())と同じよ</span>
+	&lt;button v-on:click="handleClick">Click&lt;/button>&lt;br>
+
+	<span class="text--comment">// v-model:number にて数値を取得出来る…らしい</span>
+	&lt;input type="text" v-model:number="inputMessage">
+
+	<span class="text--comment">// ↑のinputMessageをデータバインディング出来る！</span>
+	&lt;p>{{ inputMessage }}&lt;/p>
+
+	<span class="text--comment">// transition ってタグつけると v-enter、v-leave ってclassがつくみたい！</span>
+	&lt;transition>
+		<span class="text--comment">// v-if はif文かけるよ！</span>
+		&lt;p v-if="show">v-if show!&lt;/p>
+	&lt;/transition>
+
+	<span class="text--comment">// clickするたびに true と false を切り替えるよ。↑の表示非表示を変えるよ</span>
+	&lt;button v-on:click="show=!show">切り替え&lt;/button>
+&lt;/div><!--
+						--></div>
+						<p>Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app',
+	data: {
+		message: 'Hellow Vue.js!',
+		list: ['りんご', 'ばなな', 'いちご'],
+		inputMessage: 'test',
+		show: true
+	},
+	methods: {
+		handleClick: function(event) {
+			alert(event.target)
+		}
+	}
+})<!--
+					--></div>
+						<p>Style</p>
+						<div class="section_code"><!--
+-->.v-enter-active,
+.v-leave-active {
+	transition: opacity 1000ms;
+}
+.v-enter,
+.v-leave-to {
+	opacity: 0;
+}<!--
+					--></div>
+					</div>
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+						<div id="app">
+							<p>{{ message }}</p>
+							<ol>
+								<li v-for="item in list">{{ item }}</li>
+							</ol>
+							<button v-on:click="handleClick">Click</button><br>
+							<input type="text" v-model:number="inputMessage">
+							<p>{{ inputMessage }}</p>
+							<transition>
+								<p v-if="show">v-if show!</p>
+							</transition>
+							<button v-on:click="show=!show">切り替え</button>
+						</div>
+					</div>
+				</section>
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue.js!',
+			list: ['りんご', 'ばなな', 'いちご'],
+			inputMessage: 'test',
+			show: true
+		},
+		methods: {
+			handleClick: function(event) {
+				alert(event.target)
+			}
+		}
+	})
+</script>
+<style>
+	.v-enter-active,
+	.v-leave-active {
+		transition: opacity 1000ms;
+	}
+	.v-enter,
+	.v-leave-to {
+		opacity: 0;
+	}
+</style>
+
+</html>

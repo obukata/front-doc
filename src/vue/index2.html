@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRONT DOCS</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+<!-- Styles============================================ -->
+<link href="../assets/styles/core.css" rel="stylesheet">
+<link href="../assets/styles/core_sp.css" rel="stylesheet">
+
+<!-- Scripts=========================================== -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+</head>
+
+<body class="page">
+
+	<div class="page_wrap">
+		<header class="header">
+			<div class="header_body">
+				<p class="header_logo"><a href="../">FRONT DOCS</a></p>
+				<p class="header_github"><a href="https://github.com/obukata/" target="_blank"><img src="../assets/images/icon_github.png" alt="GitHub"></a></p>
+			</div>
+		</header>
+
+		<main class="main">
+			<article class="article">
+
+				<section class="section">
+					<div class="hero">
+						<div class="hero_body">
+							<h1 class="hero_title line--title_bottom line--color01">基本のデータバインディング</h1>
+							<p class="hero_text">2018.11.12</p>
+						</div>
+
+
+					</div>
+				</section>
+
+				<section class="section">
+					<div class="section_body">
+						<h2 class="section_title">データバインディング</h2>
+						<p>なんだか、楽しいデータバインディング。意味ははっきりとは分かってない！</p>
+						<div class="section_code"><!--
+-->&lt;div id="app">
+
+	<span class="text--comment">// message.value なんて感じでオブジェクトな扱いが出来ていい感じ</span>
+	&lt;p>{{ message.value }}&lt;/p>
+
+	<span class="text--comment">// Vueインスタンス内で定義してるプロパティも使えるよーん</span>
+	&lt;p>{{ message.value.length }}&lt;/p>
+	&lt;p>{{ list[2] }}&lt;/p>
+	&lt;p>{{ list[num] }}&lt;/p>
+
+	<span class="text--comment">// {{ message }} みたいなのはDOMContentとして使う。プロパティで使う場合は v-bind:value="" で使うべし</span>
+	&lt;input type="text" v-bind:value="message.value">
+
+	<span class="text--comment">// .prop みたいなよく分かんない書き方もあるのよ。よく分かんないのよ</span>
+	&lt;div v-bind:text-content.prop="message.value">&lt;/div>
+	&lt;div v-bind:scroll-top.prop="message.value">{{ message.value }}&lt;/div>
+
+	<span class="text--comment">// v-on:click で increment関数を発火させて、簡易カウンターだよ</span>
+	&lt;p>{{ count }}回クリックしたで！&lt;/p>
+	&lt;button v-on:click="increment">カウントを増やす&lt;/button>
+&lt;/div><!--
+						--></div>
+						<p>Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app',
+
+	<span class="text--comment">// data内に色々定義出来ていい感じよー</span>
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		},
+		count: 0,
+		scroll: 0,
+		list: ['りんご', 'ばなな', 'いちご'],
+		num: 1
+	},
+
+	<span class="text--comment">// mounted、なんだろころ。</span>
+	mounted: function() {
+		this.scroll = 100
+	},
+
+	<span class="text--comment">// メソッドの定義もこんな感じ？これっていっぱいメソッド追加したらややこしくない？いい感じにモジュール化するのかな？</span>
+	methods: {
+		increment: function() {
+			this.count += 1
+		}
+	}
+})<!--
+					--></div>
+					</div>
+					<div class="section_body">
+						<h2 class="section_title">DEMO</h2>
+						<div id="app">
+							<p>{{ message.value }}</p>
+							<p>{{ message.value.length }}</p>
+							<p>{{ list[2] }}</p>
+							<p>{{ list[num] }}</p>
+							<input type="text" v-bind:value="message.value">
+							<div v-bind:text-content.prop="message.value"></div>
+							<div v-bind:scroll-top.prop="message.value">{{ message.value }}</div>
+							<p>{{ count }}回クリックしたで！</p>
+							<button v-on:click="increment">カウントを増やす</button>
+						</div>
+					</div>
+				</section>
+			</article>
+		</main>
+
+		<footer class="footer">
+			<div class="footer_body">
+				<p class="footer_copyright">&copy; 2016 FRONT DOCS</p>
+			</div>
+		</footer>
+	</div>
+
+</body>
+
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: {
+				value: 'Hello Vue.js!'
+			},
+			count: 0,
+			scroll: 0,
+			list: ['りんご', 'ばなな', 'いちご'],
+			num: 1
+		},
+		mounted: function() {
+			this.scroll = 100
+		},
+		methods: {
+			increment: function() {
+				this.count += 1
+			}
+		}
+	})
+</script>
+
+</html>
