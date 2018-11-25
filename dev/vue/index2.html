@@ -45,50 +45,146 @@
 					<div class="section_body">
 						<h2 class="section_title">データバインディング</h2>
 						<p>なんだか、楽しいデータバインディング。意味ははっきりとは分かってない！</p>
+					</div>
+
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO1</h2>
+						<p class="text--strong">HTML</p>
 						<div class="section_code"><!--
 -->&lt;div id="app">
-
 	<span class="text--comment">// message.value なんて感じでオブジェクトな扱いが出来ていい感じ</span>
 	&lt;p>{{ message.value }}&lt;/p>
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		}
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app">
+							<p>{{ message.value }}</p>
+						</div>
+					</div>
 
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO2</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app2">
 	<span class="text--comment">// Vueインスタンス内で定義してるプロパティも使えるよーん</span>
 	&lt;p>{{ message.value.length }}&lt;/p>
 	&lt;p>{{ list[2] }}&lt;/p>
 	&lt;p>{{ list[num] }}&lt;/p>
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app2',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		},
+		list: ['りんご', 'ばなな', 'いちご'],
+		num: 1
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app2">
+							<p>{{ message.value.length }}</p>
+							<p>{{ list[2] }}</p>
+							<p>{{ list[num] }}</p>
+						</div>
+					</div>
 
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO3</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app3">
 	<span class="text--comment">// {{ message }} みたいなのはDOMContentとして使う。プロパティで使う場合は v-bind:value="" で使うべし</span>
 	&lt;input type="text" v-bind:value="message.value">
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app3',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		}
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app3">
+							<input type="text" v-bind:value="message.value">
+						</div>
+					</div>
 
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO4</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app4">
 	<span class="text--comment">// .prop みたいなよく分かんない書き方もあるのよ。よく分かんないのよ</span>
 	&lt;div v-bind:text-content.prop="message.value">&lt;/div>
 	&lt;div v-bind:scroll-top.prop="message.value">{{ message.value }}&lt;/div>
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app4',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		}
+	},
+	<span class="text--comment">// mounted、なんだろころ。</span>
+	mounted: function() {
+		this.scroll = 100
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app4">
+							<div v-bind:text-content.prop="message.value"></div>
+							<div v-bind:scroll-top.prop="message.value">{{ message.value }}</div>
+						</div>
+					</div>
 
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO5</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app5">
 	<span class="text--comment">// v-on:click で increment関数を発火させて、簡易カウンターだよ</span>
 	&lt;p>{{ count }}回クリックしたで！&lt;/p>
 	&lt;button v-on:click="increment">カウントを増やす&lt;/button>
 &lt;/div><!--
 						--></div>
-						<p>Script</p>
+						<p class="text--strong">Script</p>
 						<div class="section_code"><!--
 -->var app = new Vue({
-	el: '#app',
-
-	<span class="text--comment">// data内に色々定義出来ていい感じよー</span>
+	el: '#app5',
 	data: {
-		message: {
-			value: 'Hello Vue.js!'
-		},
-		count: 0,
-		scroll: 0,
-		list: ['りんご', 'ばなな', 'いちご'],
-		num: 1
-	},
-
-	<span class="text--comment">// mounted、なんだろころ。</span>
-	mounted: function() {
-		this.scroll = 100
-	},
-
+		count: 0
+	}
 	<span class="text--comment">// メソッドの定義もこんな感じ？これっていっぱいメソッド追加したらややこしくない？いい感じにモジュール化するのかな？</span>
 	methods: {
 		increment: function() {
@@ -97,17 +193,8 @@
 	}
 })<!--
 					--></div>
-					</div>
-					<div class="section_body">
-						<h2 class="section_title">DEMO</h2>
-						<div id="app">
-							<p>{{ message.value }}</p>
-							<p>{{ message.value.length }}</p>
-							<p>{{ list[2] }}</p>
-							<p>{{ list[num] }}</p>
-							<input type="text" v-bind:value="message.value">
-							<div v-bind:text-content.prop="message.value"></div>
-							<div v-bind:scroll-top.prop="message.value">{{ message.value }}</div>
+						<p class="text--strong">出力結果</p>
+						<div id="app5">
 							<p>{{ count }}回クリックしたで！</p>
 							<button v-on:click="increment">カウントを増やす</button>
 						</div>
@@ -126,26 +213,59 @@
 </body>
 
 <script>
-	var app = new Vue({
-		el: '#app',
-		data: {
-			message: {
-				value: 'Hello Vue.js!'
-			},
-			count: 0,
-			scroll: 0,
-			list: ['りんご', 'ばなな', 'いちご'],
-			num: 1
-		},
-		mounted: function() {
-			this.scroll = 100
-		},
-		methods: {
-			increment: function() {
-				this.count += 1
-			}
+var app = new Vue({
+	el: '#app',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
 		}
-	})
+	}
+})
+
+var app = new Vue({
+	el: '#app2',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		},
+		list: ['りんご', 'ばなな', 'いちご'],
+		num: 1
+	}
+})
+
+var app = new Vue({
+	el: '#app3',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		}
+	}
+})
+
+var app = new Vue({
+	el: '#app4',
+	data: {
+		message: {
+			value: 'Hello Vue.js!'
+		},
+		scroll: 0,
+	},
+	mounted: function() {
+		this.scroll = 100
+	}
+})
+
+var app = new Vue({
+	el: '#app5',
+	data: {
+		count: 0,
+	},
+	methods: {
+		increment: function() {
+			this.count += 1
+		}
+	}
+})
 </script>
 
 </html>

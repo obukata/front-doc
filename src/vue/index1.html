@@ -50,27 +50,125 @@
 							<li>HTMLにVueを動かす要素を用意する</li>
 							<li><span class="text--code">new Vue()</span>にてVueインスタンスを生成する</li>
 						</ul>
-						<p>Vueを動かす要素ってのは↓みたいな感じ</p>
+					</div>
+
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO1</h2>
+						<p class="text--strong">HTML</p>
 						<div class="section_code"><!--
 --><span class="text--comment">// マウントする#app</span>
 &lt;div id="app">
 	<span class="text--comment">// {{ 変数 }} のような形なテンプレート</span>
 	&lt;p>{{ message }}&lt;/p>
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app',
+	data: {
+		message: 'Hellow Vue.js!'
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app">
+							<p>{{ message }}</p>
+						</div>
+					</div>
 
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO2</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app2">
 	<span class="text--comment">// v-for="" でfor文がかけます。 item in 変数 にて、配列を格納してる変数の内容を全て吐き出す。</span>
 	&lt;ol>
 		&lt;li v-for="item in list">{{ item }}&lt;/li>
 	&lt;/ol>
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app2',
+	data: {
+		list: ['りんご', 'ばなな', 'いちご']
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app2">
+							<ol>
+								<li v-for="item in list">{{ item }}</li>
+							</ol>
+						</div>
+					</div>
 
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO3</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app3">
 	<span class="text--comment">// v-on:click はjQueryの element.on('click', handleClick())・addEventListener('click', handleClick())と同じよ</span>
 	&lt;button v-on:click="handleClick">Click&lt;/button>&lt;br>
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app3',
+	methods: {
+		handleClick: function(event) {
+			alert(event.target)
+		}
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app3">
+							<button v-on:click="handleClick">Click</button><br>
+						</div>
+					</div>
 
-	<span class="text--comment">// v-model:number にて数値を取得出来る…らしい</span>
-	&lt;input type="text" v-model:number="inputMessage">
 
+					<div class="section_body">
+						<h2 class="section_title">DEMO4</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app4">
 	<span class="text--comment">// ↑のinputMessageをデータバインディング出来る！</span>
 	&lt;p>{{ inputMessage }}&lt;/p>
 
+	<span class="text--comment">// v-model:number にて数値を取得出来る…らしい</span>
+	&lt;input type="text" v-model:number="inputMessage">
+&lt;/div><!--
+						--></div>
+						<p class="text--strong">Script</p>
+						<div class="section_code"><!--
+-->var app = new Vue({
+	el: '#app4',
+	data: {
+		inputMessage: 'test',
+	}
+})<!--
+					--></div>
+						<p class="text--strong">出力結果</p>
+						<div id="app4">
+							<p>{{ inputMessage }}</p>
+							<input type="text" v-model:number="inputMessage">
+						</div>
+					</div>
+
+
+					<div class="section_body">
+						<h2 class="section_title">DEMO5</h2>
+						<p class="text--strong">HTML</p>
+						<div class="section_code"><!--
+-->&lt;div id="app5">
 	<span class="text--comment">// transition ってタグつけると v-enter、v-leave ってclassがつくみたい！</span>
 	&lt;transition>
 		<span class="text--comment">// v-if はif文かけるよ！</span>
@@ -81,24 +179,16 @@
 	&lt;button v-on:click="show=!show">切り替え&lt;/button>
 &lt;/div><!--
 						--></div>
-						<p>Script</p>
+						<p class="text--strong">Script</p>
 						<div class="section_code"><!--
 -->var app = new Vue({
-	el: '#app',
+	el: '#app5',
 	data: {
-		message: 'Hellow Vue.js!',
-		list: ['りんご', 'ばなな', 'いちご'],
-		inputMessage: 'test',
 		show: true
-	},
-	methods: {
-		handleClick: function(event) {
-			alert(event.target)
-		}
 	}
 })<!--
 					--></div>
-						<p>Style</p>
+						<p class="text--strong">Style</p>
 						<div class="section_code"><!--
 -->.v-enter-active,
 .v-leave-active {
@@ -109,17 +199,8 @@
 	opacity: 0;
 }<!--
 					--></div>
-					</div>
-					<div class="section_body">
-						<h2 class="section_title">DEMO</h2>
-						<div id="app">
-							<p>{{ message }}</p>
-							<ol>
-								<li v-for="item in list">{{ item }}</li>
-							</ol>
-							<button v-on:click="handleClick">Click</button><br>
-							<input type="text" v-model:number="inputMessage">
-							<p>{{ inputMessage }}</p>
+						<p class="text--strong">出力結果</p>
+						<div id="app5">
 							<transition>
 								<p v-if="show">v-if show!</p>
 							</transition>
@@ -143,15 +224,37 @@
 	var app = new Vue({
 		el: '#app',
 		data: {
-			message: 'Hello Vue.js!',
-			list: ['りんご', 'ばなな', 'いちご'],
-			inputMessage: 'test',
-			show: true
-		},
+			message: 'Hello Vue.js!'
+		}
+	})
+
+	var app = new Vue({
+		el: '#app2',
+		data: {
+			list: ['りんご', 'ばなな', 'いちご']
+		}
+	})
+
+	var app = new Vue({
+		el: '#app3',
 		methods: {
 			handleClick: function(event) {
 				alert(event.target)
 			}
+		}
+	})
+
+	var app = new Vue({
+		el: '#app4',
+		data: {
+			inputMessage: 'test',
+		}
+	})
+
+	var app = new Vue({
+		el: '#app5',
+		data: {
+			show: true
 		}
 	})
 </script>
